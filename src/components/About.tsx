@@ -29,9 +29,13 @@ const About = () => {
                   Kubernetes orchestration, and advanced CI/CD automation. My approach combines technical excellence with business 
                   impact, focusing on <strong className="text-blue-600">security-first architecture</strong> and intelligent cost optimization.
                 </p>
-                <p>
-                  I'm passionate about the <strong className="text-blue-600">"automate everything"</strong> mindset and believe in building systems that not only 
+                <p className="mb-6">
+                  I'm passionate about the <strong className="text-blue-600">"automate everything"</strong> mindset and believe in building systems that not only
                   work today but scale effortlessly for tomorrow. Currently pursuing opportunities to work on exciting projects as a freelancer.
+                </p>
+                <p>
+                  Recently earned my <strong className="text-blue-600">AWS Certified Cloud Practitioner certification</strong> (November 2024),
+                  validating my foundational cloud expertise and commitment to staying current with industry standards.
                 </p>
               </div>
             </div>
