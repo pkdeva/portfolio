@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* Carbon Design System inspired styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Carbon Design System inspired styles */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
   /* Carbon Design System Color Tokens */

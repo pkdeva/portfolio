@@ -14,7 +14,7 @@ const Header = () => {
               <div className="bg-blue-600 p-2 rounded-lg">
                 <Cloud className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-semibold text-gray-900">Priyanshu Kumar</span>
+              <span className="text-xl font-semibold text-gray-900">Priyanshu K.</span>
             </div>
           </div>
 
