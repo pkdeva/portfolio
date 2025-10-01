@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Building, Calendar, ExternalLink, Award } from 'lucide-react';
 
 const Experience = () => {
+  const [visibleCards, setVisibleCards] = useState(new Set());
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = parseInt(entry.target.dataset.index);
+          if (entry.isIntersecting) {
+            setVisibleCards(prev => new Set([...prev, index]));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-100px 0px -100px 0px' }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const experiences = [
     {
       company: "Clinikally (YC S22)",
@@ -53,36 +76,59 @@ const Experience = () => {
             <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-blue-200"></div>
 
             {experiences.map((exp, index) => (
-              <div key={index} className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+              <div
+                key={index}
+                ref={(el) => (cardRefs.current[index] = el)}
+                data-index={index}
+                className={`relative flex items-center mb-16 sticky transition-all duration-700 ease-out ${
+                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                } ${
+                  visibleCards.has(index)
+                    ? 'translate-y-0 opacity-100 scale-100'
+                    : 'translate-y-20 opacity-0 scale-95'
+                }`}
+                style={{
+                  top: `${4 + index * 2}rem`,
+                  transitionDelay: `${index * 100}ms`
+                }}
+              >
                 {/* Timeline dot */}
                 <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
                   <div className="w-3 h-3 bg-white rounded-full"></div>
                 </div>
 
                 {/* Content */}
-                <div className={`bg-white rounded-lg shadow-lg p-6 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8 md:ml-0' : 'md:ml-8'} md:w-5/12`}>
-                  <div className="flex items-center mb-4">
-                    <span className="text-2xl mr-3">{exp.logo}</span>
+                <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 p-8 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8 md:ml-0' : 'md:ml-8'} md:w-5/12 hover:shadow-2xl transition-shadow duration-300`}>
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-xl mr-4">
+                      {exp.logo}
+                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-gray-900">{exp.role}</h3>
-                      <p className="text-blue-600 font-semibold">{exp.company}</p>
+                      <p className="text-blue-600 font-semibold text-lg">{exp.company}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
+                  <div className="flex items-center text-sm text-gray-500 mb-6">
                     <Calendar className="h-4 w-4 mr-2" />
-                    <span>{exp.duration}</span>
-                    <span className="mx-2">•</span>
+                    <span className="font-medium">{exp.duration}</span>
+                    <span className="mx-3">•</span>
                     <span>{exp.location}</span>
                   </div>
 
-                  <p className="text-gray-600 mb-4">{exp.description}</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{exp.description}</p>
 
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-gray-900">Key Achievements:</h4>
-                    <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-gray-900 flex items-center">
+                      <Award className="h-5 w-5 mr-2 text-blue-600" />
+                      Key Achievements
+                    </h4>
+                    <ul className="space-y-3">
                       {exp.highlights.map((highlight, hIndex) => (
-                        <li key={hIndex}>{highlight}</li>
+                        <li key={hIndex} className="flex items-start">
+                          <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                          <span className="text-sm text-gray-700 leading-relaxed">{highlight}</span>
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -91,7 +137,6 @@ const Experience = () => {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

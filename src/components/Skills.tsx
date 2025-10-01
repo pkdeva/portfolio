@@ -23,25 +23,25 @@ const Skills = () => {
       title: "Infrastructure as Code",
       icon: Settings,
       gradient: "from-orange-600 to-red-500",
-      skills: ["Terraform", "Ansible", "CloudFormation"],
+      skills: ["Terraform", "CloudFormation", "Helm", "Ansible"],
       level: 88
     },
     {
       title: "CI/CD Pipelines",
       icon: GitBranch,
       gradient: "from-purple-600 to-pink-500",
-      skills: ["Jenkins", "GitHub Actions", "CodePipeline"],
+      skills: ["Jenkins", "GitHub Actions", "AWS CodePipeline", "Bitbucket Pipelines"],
       level: 92
     },
     {
-      title: "Monitoring & Observability",
+      title: "Logging, Monitoring & Observability",
       icon: Monitor,
       gradient: "from-red-600 to-orange-500",
-      skills: ["Prometheus", "Grafana", "NewRelic"],
+      skills: ["Prometheus", "Grafana Stack", "OpenTelemetry", "NewRelic", "ELK Stack", "SumoLogic"],
       level: 85
     },
     {
-      title: "Security & Compliance",
+      title: "Security & Compliance", 
       icon: Shield,
       gradient: "from-indigo-600 to-purple-500",
       skills: ["Zero-Trust", "RBAC/IAM", "Security Scanning"],
@@ -136,6 +136,7 @@ const Skills = () => {
                 "Event-Driven Architecture",
                 "Microservices",
                 "Load Balancing",
+                "Routing & Traffic Management",
                 "Auto Scaling",
                 "Disaster Recovery",
                 "CloudFinOps",
@@ -146,6 +147,7 @@ const Skills = () => {
                 "Technical Documentation",
                 "Agile/Scrum",
                 "Zero-Trust Security"
+                
               ].map((competency, index) => (
                 <span
                   key={index}
