@@ -3,27 +3,27 @@ import { Download, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative bg-white pt-24 pb-16 sm:pt-32 sm:pb-24">
+    <section id="home" className="relative bg-white dark:bg-gray-900 pt-24 pb-16 sm:pt-32 sm:pb-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Single Horizontal Card */}
-        <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 lg:p-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 p-8 lg:p-12 transition-colors duration-300">
           <div className="flex flex-col lg:flex-row lg:items-center lg:space-x-12 space-y-8 lg:space-y-0">
 
             {/* Left Content */}
             <div className="flex-1">
               <div className="mb-6">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 transition-colors duration-300">
                   Available for Freelance
                 </span>
               </div>
 
-              <h1 className="text-4xl font-bold text-gray-900 tracking-tight sm:text-5xl lg:text-6xl mb-2">
-                <span className="block text-gray-600 text-lg font-normal mb-2">Hi, I'm</span>
+              <h1 className="text-4xl font-bold text-gray-900 dark:text-white tracking-tight sm:text-5xl lg:text-6xl mb-2 transition-colors duration-300">
+                <span className="block text-gray-600 dark:text-gray-300 text-lg font-normal mb-2 transition-colors duration-300">Hi, I'm</span>
                 <span className="block mb-4">Priyanshu Kumar</span>
-                <span className="block text-blue-600 text-3xl sm:text-4xl lg:text-5xl">DevOps Engineer & SRE Catalyst.</span>
+                <span className="block text-blue-600 dark:text-blue-400 text-3xl sm:text-4xl lg:text-5xl transition-colors duration-300">DevOps Engineer & SRE Catalyst.</span>
               </h1>
 
-              <p className="mt-6 text-xl text-gray-500 max-w-2xl">
+              <p className="mt-6 text-xl text-gray-500 dark:text-gray-400 max-w-2xl transition-colors duration-300">
                 Building resilient cloud infrastructure at Y-Combinator backed health-tech startup.
                 Expertise in AWS, GCP, Kubernetes, and CI/CD automation. Passionate about reliability engineering
                 and aligning technology with business impact.
@@ -33,14 +33,16 @@ const Hero = () => {
                 <div className="flex space-x-4">
                   <a
                     href="#contact"
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors"
                   >
                     Hit Me Up
                     <Mail className="ml-2 h-5 w-5" />
                   </a>
                   <a
-                    href="/resume.pdf"
-                    className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                    href="/PK DevOps CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
                   >
                     Get My CV
                     <Download className="ml-2 h-5 w-5" />
@@ -49,17 +51,20 @@ const Hero = () => {
               </div>
 
               <div className="mt-8 flex space-x-6">
-                <a href="https://github.com/pkdeva" className="text-gray-400 hover:text-gray-500 transition-colors">
+                <a href="https://github.com/pkdeva" target="_blank" rel="noopener noreferrer" className="group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gray-900 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
                   <span className="sr-only">GitHub</span>
-                  <Github className="h-6 w-6" />
+                  <Github className="h-6 w-6 transform group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="absolute inset-0 rounded-full bg-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                 </a>
-                <a href="https://linkedin.com/in/pkdeva" className="text-gray-400 hover:text-gray-500 transition-colors">
+                <a href="https://linkedin.com/in/pkdeva" target="_blank" rel="noopener noreferrer" className="group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 dark:hover:bg-blue-500 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
                   <span className="sr-only">LinkedIn</span>
-                  <Linkedin className="h-6 w-6" />
+                  <Linkedin className="h-6 w-6 transform group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="absolute inset-0 rounded-full bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                 </a>
-                <a href="mailto:priyanshu.txt@gmail.com" className="text-gray-400 hover:text-gray-500 transition-colors">
-                  <span className="sr-only">Email</span>
-                  <Mail className="h-6 w-6" />
+                <a href="#contact" className="group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-green-600 dark:hover:bg-green-500 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
+                  <span className="sr-only">Contact</span>
+                  <Mail className="h-6 w-6 transform group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="absolute inset-0 rounded-full bg-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                 </a>
               </div>
             </div>
@@ -72,18 +77,19 @@ const Hero = () => {
                   <img
                     src="/profile.png"
                     alt="Priyanshu Kumar."
-                    className="w-full h-full rounded-full object-cover border-4 border-blue-100 shadow-lg"
+                    className="w-full h-full rounded-full object-cover border-4 border-blue-100 dark:border-blue-900 shadow-lg transition-colors duration-300"
                   />
-                  <div className="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full border-4 border-white flex items-center justify-center">
-                    <div className="w-3 h-3 bg-white rounded-full"></div>
+                  {/* LinkedIn-style Online Indicator */}
+                  <div className="absolute bottom-4 right-4 w-8 h-8 bg-green-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg transition-colors duration-300">
+                    <div className="w-full h-full bg-green-500 rounded-full animate-pulse"></div>
                   </div>
                 </div>
 
                 {/* Experience */}
                 <div className="max-w-xs mx-auto">
-                  <div className="bg-gray-50 rounded-lg p-4 text-center">
-                    <div className="text-3xl font-bold text-blue-600">2+</div>
-                    <div className="text-sm text-gray-600">Years of Experience</div>
+                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center transition-colors duration-300">
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 transition-colors duration-300">2+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">Years of Experience</div>
                   </div>
                 </div>
               </div>

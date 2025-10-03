@@ -59,13 +59,13 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-16 sm:py-24 bg-gray-50">
+    <section id="experience" className="py-16 sm:py-24 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl transition-colors duration-300">
             Professional Experience
           </h2>
-          <p className="mt-4 text-xl text-gray-600">
+          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
             Building reliable infrastructure and driving DevOps excellence
           </p>
         </div>
@@ -73,7 +73,7 @@ const Experience = () => {
         <div className="mt-16">
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-blue-200"></div>
+            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-blue-200 dark:bg-blue-700"></div>
 
             {experiences.map((exp, index) => (
               <div
@@ -93,41 +93,41 @@ const Experience = () => {
                 }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center transition-colors duration-300">
                   <div className="w-3 h-3 bg-white rounded-full"></div>
                 </div>
 
                 {/* Content */}
-                <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 p-8 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8 md:ml-0' : 'md:ml-8'} md:w-5/12 hover:shadow-2xl transition-shadow duration-300`}>
+                <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 p-8 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8 md:ml-0' : 'md:ml-8'} md:w-5/12 hover:shadow-2xl dark:hover:shadow-gray-900/70 transition-all duration-300`}>
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-xl mr-4">
+                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center text-xl mr-4 transition-colors duration-300">
                       {exp.logo}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">{exp.role}</h3>
-                      <p className="text-blue-600 font-semibold text-lg">{exp.company}</p>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{exp.role}</h3>
+                      <p className="text-blue-600 dark:text-blue-400 font-semibold text-lg transition-colors duration-300">{exp.company}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center text-sm text-gray-500 mb-6">
+                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6 transition-colors duration-300">
                     <Calendar className="h-4 w-4 mr-2" />
                     <span className="font-medium">{exp.duration}</span>
                     <span className="mx-3">•</span>
                     <span>{exp.location}</span>
                   </div>
 
-                  <p className="text-gray-600 mb-6 leading-relaxed">{exp.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed transition-colors duration-300">{exp.description}</p>
 
                   <div className="space-y-4">
-                    <h4 className="font-bold text-gray-900 flex items-center">
-                      <Award className="h-5 w-5 mr-2 text-blue-600" />
+                    <h4 className="font-bold text-gray-900 dark:text-white flex items-center transition-colors duration-300">
+                      <Award className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
                       Key Achievements
                     </h4>
                     <ul className="space-y-3">
                       {exp.highlights.map((highlight, hIndex) => (
                         <li key={hIndex} className="flex items-start">
-                          <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-sm text-gray-700 leading-relaxed">{highlight}</span>
+                          <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                          <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed transition-colors duration-300">{highlight}</span>
                         </li>
                       ))}
                     </ul>

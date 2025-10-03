@@ -51,7 +51,7 @@ const Skills = () => {
 
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 text-gray-900 relative overflow-hidden">
+    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
@@ -73,20 +73,22 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="group relative cursor-pointer"
+              className="group relative"
               onMouseEnter={() => setActiveCategory(index)}
             >
-              {/* Hover Glow Effect */}
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${category.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`}></div>
+              {/* Enhanced Glowing Edge Effects */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 blur-sm transition-all duration-300 -z-20"></div>
+              <div className={`absolute -inset-0.5 bg-gradient-to-r ${category.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-30`}></div>
 
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-lg group-hover:border-transparent group-hover:shadow-2xl transition-all duration-500 transform group-hover:scale-105">
+              <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-600/50 shadow-lg dark:shadow-gray-900/50 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 group-hover:shadow-xl dark:group-hover:shadow-gray-900/70 group-hover:shadow-blue-500/10 dark:group-hover:shadow-blue-400/10 transition-all duration-300 transform group-hover:scale-105">
                 {/* Icon */}
                 <div className={`w-14 h-14 bg-gradient-to-r ${category.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-500`}>
                   <category.icon className="h-7 w-7 text-white" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                   {category.title}
                 </h3>
 
@@ -95,7 +97,7 @@ const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <span
                       key={skillIndex}
-                      className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full border border-gray-300/50 group-hover:bg-gray-200 group-hover:text-gray-900 transition-all duration-300">
+                      className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full border border-gray-300/50 dark:border-gray-600/50 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 group-hover:text-gray-900 dark:group-hover:text-white transition-all duration-300">
                     
                       {skill}
                     </span>
@@ -108,7 +110,7 @@ const Skills = () => {
                     <span>Proficiency</span>
                     <span>{category.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                  <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 overflow-hidden">
                     <div
                       className={`h-full bg-gradient-to-r ${category.gradient} rounded-full transition-all duration-1000 ease-out transform origin-left`}
                       style={{
@@ -126,7 +128,7 @@ const Skills = () => {
         {/* Additional Competencies */}
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-purple-200/30 to-indigo-200/30 rounded-3xl blur-xl"></div>
-          <div className="relative bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-purple-200/50 shadow-xl">
+          <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-3xl p-8 border border-purple-200/50 dark:border-purple-700/50 shadow-xl dark:shadow-gray-900/50">
             <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
               Additional Competencies
             </h3>
@@ -151,7 +153,7 @@ const Skills = () => {
               ].map((competency, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-800 rounded-full border border-purple-200 hover:from-purple-600 hover:to-indigo-600 hover:text-white hover:border-purple-400 transition-all duration-300 transform hover:scale-105 cursor-default text-sm"
+                  className="px-4 py-2 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-800 dark:to-indigo-800 text-purple-800 dark:text-purple-200 rounded-full border border-purple-200 dark:border-purple-600 hover:from-purple-600 hover:to-indigo-600 dark:hover:from-purple-500 dark:hover:to-indigo-500 hover:text-white hover:border-purple-400 dark:hover:border-purple-300 transition-all duration-300 transform hover:scale-105 cursor-default text-sm"
                 >
                   {competency}
                 </span>
