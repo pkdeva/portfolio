@@ -68,57 +68,55 @@ const Skills = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
         </div>
 
-        {/* Interactive Skills Grid */}
+        {/* Skills Grid - Project Breakthroughs Style */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="group relative"
+              className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg dark:shadow-gray-900/50 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 p-6 relative overflow-hidden hover:border-blue-500/50 dark:hover:border-blue-400/50 hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 hover:scale-105 transform"
               onMouseEnter={() => setActiveCategory(index)}
             >
-              {/* Enhanced Glowing Edge Effects */}
+              {/* Glowing edge effect on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 blur-sm transition-all duration-300 -z-20"></div>
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${category.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-30`}></div>
 
-              <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-600/50 shadow-lg dark:shadow-gray-900/50 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50 group-hover:shadow-xl dark:group-hover:shadow-gray-900/70 group-hover:shadow-blue-500/10 dark:group-hover:shadow-blue-400/10 transition-all duration-300 transform group-hover:scale-105">
-                {/* Icon */}
-                <div className={`w-14 h-14 bg-gradient-to-r ${category.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-500`}>
-                  <category.icon className="h-7 w-7 text-white" />
+              {/* Header */}
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center mr-3 transition-colors duration-300">
+                  <category.icon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300">{category.title}</h3>
+                </div>
+              </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                  {category.title}
-                </h3>
-
-                {/* Skills Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
+              {/* Skills Tags */}
+              <div className="mb-4">
+                <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
                     <span
                       key={skillIndex}
-                      className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full border border-gray-300/50 dark:border-gray-600/50 group-hover:bg-gray-200 dark:group-hover:bg-gray-600 group-hover:text-gray-900 dark:group-hover:text-white transition-all duration-300">
-                    
+                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium rounded-full transition-colors duration-300"
+                    >
                       {skill}
                     </span>
                   ))}
                 </div>
+              </div>
 
-                {/* Progress Bar */}
-                <div className="relative">
-                  <div className="flex justify-between text-xs text-gray-400 mb-2">
-                    <span>Proficiency</span>
-                    <span>{category.level}%</span>
-                  </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 overflow-hidden">
+              {/* Proficiency Level */}
+              <div>
+                <h4 className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 transition-colors duration-300">Proficiency Level:</h4>
+                <div className="flex items-center space-x-2">
+                  <div className="flex-1 bg-gray-200 dark:bg-gray-600 rounded-full h-2 overflow-hidden">
                     <div
-                      className={`h-full bg-gradient-to-r ${category.gradient} rounded-full transition-all duration-1000 ease-out transform origin-left`}
+                      className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 ease-out"
                       style={{
-                        width: activeCategory === index ? `${category.level}%` : '0%',
-                        transform: activeCategory === index ? 'scaleX(1)' : 'scaleX(0)'
+                        width: activeCategory === index ? `${category.level}%` : '0%'
                       }}
                     ></div>
                   </div>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-300 min-w-[3rem]">{category.level}%</span>
                 </div>
               </div>
             </div>

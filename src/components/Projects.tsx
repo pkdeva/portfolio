@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Award, TrendingUp, Shield, Zap, X } from 'lucide-react';
+import { ExternalLink, Github, Award, TrendingUp, Shield, Zap, X, ChevronDown } from 'lucide-react';
 
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
@@ -125,11 +125,14 @@ const Projects = () => {
 
         {/* Compact Call to Action */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 dark:hover:from-blue-600 dark:hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer">
+          <a
+            href="#contact"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 dark:hover:from-blue-600 dark:hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer"
+          >
             <Award className="h-4 w-4 mr-2" />
             Start a Project
-            <ExternalLink className="h-4 w-4 ml-2" />
-          </div>
+            <ChevronDown className="h-4 w-4 ml-2" />
+          </a>
         </div>
 
         {/* Liquid Glass Popup Overlay */}
