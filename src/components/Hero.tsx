@@ -1,8 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const Hero = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 100); // Trigger when scrolled past hero section
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
+    <>
+      {/* Sticky Profile Card - Only show when scrolled */}
+      {isScrolled && (
+        <div className="fixed top-6 left-6 z-40 w-80 transition-all duration-500 ease-out transform">
+          <div className="bg-gray-900/95 backdrop-blur-xl rounded-3xl border border-gray-700/50 shadow-2xl p-8 transform animate-slideInLeft">
+            {/* Brand Header */}
+            <div className="text-left mb-6">
+              <h2 className="text-3xl font-bold text-white mb-1">Priyanshu K. ®</h2>
+              <p className="text-green-400 text-base font-medium">DevOps Engineer</p>
+              <p className="text-green-400 text-base font-medium">& SRE Catalyst</p>
+            </div>
+
+            {/* Large Profile Image */}
+            <div className="mb-8">
+              <div className="relative w-48 h-48 mx-auto">
+                <img
+                  src="/profile.png"
+                  alt="Priyanshu Kumar"
+                  className="w-full h-full rounded-3xl object-cover"
+                />
+                <div className="absolute bottom-3 right-3 w-8 h-8 bg-green-500 rounded-full border-4 border-gray-900"></div>
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="text-center mb-6">
+              <p className="text-white text-lg font-medium mb-2">priyanshu.txt@gmail.com</p>
+              <p className="text-gray-400 text-base">Based in Gurugram, Haryana, India</p>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-center mb-8">
+              <p className="text-gray-500 text-sm">© 2024 Priyanshu Kumar. All Rights Reserved</p>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex justify-center space-x-4 mb-8">
+              <a href="https://github.com/pkdeva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800/50 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-600">
+                <Github className="h-6 w-6 text-gray-300" />
+              </a>
+              <a href="https://linkedin.com/in/pkdeva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800/50 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-600">
+                <Linkedin className="h-6 w-6 text-gray-300" />
+              </a>
+              <a href="#contact" className="w-12 h-12 bg-gray-800/50 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-600">
+                <Mail className="h-6 w-6 text-gray-300" />
+              </a>
+            </div>
+
+            {/* Hire Me Button */}
+            <a href="#contact" className="block w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-6 rounded-full transition-colors duration-300 text-base text-center">
+              📧 HIRE ME!
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Original Hero Section */}
     <section id="home" className="relative bg-white dark:bg-gray-900 pt-24 pb-16 sm:pt-32 sm:pb-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Single Horizontal Card */}
@@ -99,6 +168,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
