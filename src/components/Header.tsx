@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Cloud, Sun, Moon, Mail, Home, User, Briefcase, Code, FolderOpen, MessageCircle } from 'lucide-react';
+import { Menu, X, Cloud, Sun, Moon, Mail, Home, User, Briefcase, Code, FolderOpen, MessageCircle, ChevronDown } from 'lucide-react';
 import { useDarkMode } from '../contexts/DarkModeContext';
 
 const Header = () => {
@@ -65,34 +65,34 @@ const Header = () => {
       {/* Centered Navigation Menu - Show when not scrolled */}
       {!isScrolled && (
         <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-out">
-          <div className="bg-gray-900/95 backdrop-blur-xl rounded-3xl border border-gray-700/50 shadow-2xl p-3">
+          <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl p-3 transition-colors duration-300">
             <div className="flex items-center space-x-3">
-              <a href="#home" className="w-12 h-12 text-green-500 hover:text-green-400 hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Home">
+              <a href="#home" className="w-12 h-12 text-green-500 hover:text-green-400 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Home">
                 <Home className="w-5 h-5" />
               </a>
-              <a href="#about" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="About">
+              <a href="#about" className="w-12 h-12 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="About">
                 <User className="w-5 h-5" />
               </a>
-              <a href="#experience" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Experience">
+              <a href="#experience" className="w-12 h-12 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Experience">
                 <Briefcase className="w-5 h-5" />
               </a>
-              <a href="#skills" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Skills">
+              <a href="#skills" className="w-12 h-12 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Skills">
                 <Code className="w-5 h-5" />
               </a>
-              <a href="#projects" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Projects">
+              <a href="#projects" className="w-12 h-12 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Projects">
                 <FolderOpen className="w-5 h-5" />
               </a>
-              <a href="#contact" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Contact">
+              <a href="#contact" className="w-12 h-12 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Contact">
                 <MessageCircle className="w-5 h-5" />
               </a>
 
               {/* Separator */}
-              <div className="w-px h-8 bg-gray-600 mx-2"></div>
+              <div className="w-px h-8 bg-gray-300 dark:bg-gray-600 mx-2 transition-colors duration-300"></div>
 
               {/* Dark Mode Toggle */}
               <button
                 onClick={toggleDarkMode}
-                className="w-12 h-12 rounded-xl bg-gray-800/50 hover:bg-gray-700 transition-all duration-300 flex items-center justify-center border border-gray-600"
+                className="w-12 h-12 rounded-xl bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center border border-gray-300 dark:border-gray-600"
                 aria-label="Toggle dark mode"
               >
                 <div className="relative w-5 h-5">
@@ -100,6 +100,24 @@ const Header = () => {
                   <Moon className={`absolute inset-0 h-5 w-5 text-blue-400 transition-all duration-300 ${isDarkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'}`} />
                 </div>
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Scroll Indicator - Only show when not scrolled */}
+      {!isScrolled && (
+        <div className="fixed top-1/2 right-6 transform -translate-y-1/2 z-40 transition-all duration-500 ease-out">
+          <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-lg p-2 animate-bounce transition-colors duration-300">
+            <div className="flex flex-col items-center justify-center h-20 w-8">
+              <div className="text-gray-600 dark:text-gray-300 text-xs font-medium transform rotate-90 whitespace-nowrap mb-3 transition-colors duration-300">
+                Scroll
+              </div>
+              <div className="flex flex-col items-center -space-y-1">
+                <ChevronDown className="w-3 h-3 text-gray-600 dark:text-gray-300 transition-colors duration-300" />
+                <ChevronDown className="w-3 h-3 text-gray-600 dark:text-gray-300 opacity-60 transition-colors duration-300" />
+                <ChevronDown className="w-3 h-3 text-gray-600 dark:text-gray-300 opacity-30 transition-colors duration-300" />
+              </div>
             </div>
           </div>
         </div>

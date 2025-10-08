@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   return (
-      <section id="contact" className="py-16 sm:py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <section id="contact" className="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl transition-colors duration-300">

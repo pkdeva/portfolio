@@ -51,7 +51,7 @@ const Skills = () => {
 
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300">
+    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>

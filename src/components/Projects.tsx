@@ -53,7 +53,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="projects" className="py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Compact Header */}
         <div className="text-center mb-12">

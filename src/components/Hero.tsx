@@ -18,53 +18,52 @@ const Hero = () => {
     <>
       {/* Sticky Profile Card - Only show when scrolled */}
       {isScrolled && (
-        <div className="fixed top-6 left-6 z-40 w-80 transition-all duration-500 ease-out transform">
-          <div className="bg-gray-900/95 backdrop-blur-xl rounded-3xl border border-gray-700/50 shadow-2xl p-8 transform animate-slideInLeft">
-            {/* Brand Header */}
-            <div className="text-left mb-6">
-              <h2 className="text-3xl font-bold text-white mb-1">Priyanshu K. ®</h2>
-              <p className="text-green-400 text-base font-medium">DevOps Engineer</p>
-              <p className="text-green-400 text-base font-medium">& SRE Catalyst</p>
+        <div className="fixed top-6 left-6 z-40 w-90 transition-all duration-500 ease-out transform">
+          <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl p-8 transform animate-slideInLeft transition-colors duration-300">
+            {/* Brand Header - AT THE TOP like Drake */}
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">Priyanshu K.</h2>
+              </div>
+              <div className="text-right">
+                <p className="text-blue-600 dark:text-blue-400 text-base font-medium transition-colors duration-300">DevOps Engineer</p>
+                <p className="text-blue-600 dark:text-blue-400 text-base font-medium transition-colors duration-300">& SRE Catalyst</p>
+              </div>
             </div>
 
-            {/* Large Profile Image */}
-            <div className="mb-8">
-              <div className="relative w-48 h-48 mx-auto">
+            {/* Profile Image - IN THE MIDDLE like Drake */}
+            <div className="mb-6">
+              <div className="relative w-44 h-56 mx-auto">
                 <img
                   src="/profile.png"
                   alt="Priyanshu Kumar"
                   className="w-full h-full rounded-3xl object-cover"
                 />
-                <div className="absolute bottom-3 right-3 w-8 h-8 bg-green-500 rounded-full border-4 border-gray-900"></div>
+                <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-500 rounded-full border-3 border-white dark:border-gray-900 transition-colors duration-300"></div>
               </div>
             </div>
 
             {/* Contact Info */}
-            <div className="text-center mb-6">
-              <p className="text-white text-lg font-medium mb-2">priyanshu.txt@gmail.com</p>
-              <p className="text-gray-400 text-base">Based in Gurugram, Haryana, India</p>
-            </div>
-
-            {/* Copyright */}
             <div className="text-center mb-8">
-              <p className="text-gray-500 text-sm">© 2024 Priyanshu Kumar. All Rights Reserved</p>
+              <p className="text-gray-900 dark:text-white text-base font-medium mb-2 transition-colors duration-300">priyanshu.txt@gmail.com</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm transition-colors duration-300">Based in Gurugram, Haryana, India</p>
             </div>
 
             {/* Social Links */}
             <div className="flex justify-center space-x-4 mb-8">
-              <a href="https://github.com/pkdeva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800/50 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-600">
-                <Github className="h-6 w-6 text-gray-300" />
+              <a href="https://github.com/pkdeva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-200 dark:border-gray-600">
+                <Github className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               </a>
-              <a href="https://linkedin.com/in/pkdeva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800/50 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-600">
-                <Linkedin className="h-6 w-6 text-gray-300" />
+              <a href="https://linkedin.com/in/pkdeva" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-200 dark:border-gray-600">
+                <Linkedin className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               </a>
-              <a href="#contact" className="w-12 h-12 bg-gray-800/50 hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-600">
-                <Mail className="h-6 w-6 text-gray-300" />
+              <a href="#contact" className="w-12 h-12 bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors border border-gray-200 dark:border-gray-600">
+                <Mail className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               </a>
             </div>
 
             {/* Hire Me Button */}
-            <a href="#contact" className="block w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-6 rounded-full transition-colors duration-300 text-base text-center">
+            <a href="#contact" className="block w-full bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 text-white font-semibold py-4 px-6 rounded-2xl transition-colors duration-300 text-base text-center">
               📧 HIRE ME!
             </a>
           </div>

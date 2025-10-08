@@ -26,7 +26,7 @@ function App() {
     <DarkModeProvider>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <Header />
-        <main className={`transition-all duration-500 ${isScrolled ? 'ml-96 mr-24 px-8' : ''}`}>
+        <main className={`transition-all duration-500 ${isScrolled ? 'ml-80 mr-24 px-12' : ''}`}>
           <Hero />
           <About />
           <Experience />
@@ -34,7 +34,7 @@ function App() {
           <Projects />
           <Contact />
         </main>
-        <div className={`transition-all duration-500 ${isScrolled ? 'ml-96 mr-24 px-8' : ''}`}>
+        <div className={`transition-all duration-500 ${isScrolled ? 'ml-80 mr-24 px-12' : ''}`}>
           <Footer />
         </div>
       </div>
