@@ -1,9 +1,43 @@
-import React, { useState } from 'react';
-import { ExternalLink, Github, Award, TrendingUp, Shield, Zap, X, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Award, TrendingUp, Shield, Zap, X, ChevronDown } from 'lucide-react';
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === sectionRef.current) {
+              setIsVisible(true);
+            }
+            const index = (entry.target as HTMLElement).dataset.index;
+            if (index) {
+              itemRefs.current[parseInt(index)]?.classList.remove('opacity-0', 'translate-y-10');
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    itemRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const projects = [
     {
@@ -53,10 +87,10 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-16 transition-colors duration-300">
+    <section id="projects" ref={sectionRef} className="py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Compact Header */}
-        <div className="text-center mb-12">
+        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl transition-colors duration-300">
             Project Breakthroughs
           </h2>
@@ -70,9 +104,10 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg dark:shadow-gray-900/50 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 p-6 cursor-pointer relative overflow-hidden hover:border-blue-500/50 dark:hover:border-blue-400/50 hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 hover:scale-105 transform"
-              onMouseEnter={() => setHoveredProject(index)}
-              onMouseLeave={() => setHoveredProject(null)}
+              ref={el => itemRefs.current[index] = el}
+              data-index={index}
+              className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg dark:shadow-gray-900/50 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-500 p-6 cursor-pointer relative overflow-hidden hover:border-blue-500/50 dark:hover:border-blue-400/50 hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 hover:scale-105 transform opacity-0 translate-y-10"
+              style={{ transitionDelay: `${index * 100}ms` }}
               onClick={() => setSelectedProject(index)}
             >
               {/* Glowing edge effect on hover */}
@@ -124,7 +159,12 @@ const Projects = () => {
         </div>
 
         {/* Compact Call to Action */}
-        <div className="mt-12 text-center">
+        <div 
+          ref={el => itemRefs.current[projects.length] = el}
+          data-index={projects.length}
+          className="mt-12 text-center transition-all duration-500 opacity-0 translate-y-10"
+          style={{ transitionDelay: `${projects.length * 100}ms` }}
+        >
           <a
             href="#contact"
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 dark:hover:from-blue-600 dark:hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer"

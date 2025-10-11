@@ -61,7 +61,7 @@ const Experience = () => {
   return (
     <section id="experience" className="py-16 sm:py-24 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl transition-colors duration-300">
             Professional Experience
           </h2>
@@ -70,35 +70,34 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="mt-16">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-blue-200 dark:bg-blue-700"></div>
+        <div className="mt-12 relative">
+          {/* Timeline line */}
+          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-blue-200 dark:bg-blue-700"></div>
 
+          <div className="space-y-16">
             {experiences.map((exp, index) => (
               <div
                 key={index}
                 ref={(el) => (cardRefs.current[index] = el)}
                 data-index={index}
-                className={`relative flex items-center mb-16 sticky transition-all duration-700 ease-out ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                className={`relative flex items-start transition-all duration-700 ease-out ${
+                  index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'
                 } ${
                   visibleCards.has(index)
-                    ? 'translate-y-0 opacity-100 scale-100'
-                    : 'translate-y-20 opacity-0 scale-95'
+                    ? 'translate-y-0 opacity-100'
+                    : 'translate-y-10 opacity-0'
                 }`}
                 style={{
-                  top: `${4 + index * 2}rem`,
-                  transitionDelay: `${index * 100}ms`
+                  transitionDelay: `${index * 150}ms`
                 }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center transition-colors duration-300">
+                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 mt-1 w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center transition-colors duration-300 z-10">
                   <div className="w-3 h-3 bg-white rounded-full"></div>
                 </div>
 
                 {/* Content */}
-                <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 p-8 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8 md:ml-0' : 'md:ml-8'} md:w-5/12 hover:shadow-2xl dark:hover:shadow-gray-900/70 transition-all duration-300`}>
+                <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 p-8 ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'} md:w-5/12 hover:shadow-2xl dark:hover:shadow-gray-900/70 transition-all duration-300`}>
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center text-xl mr-4 transition-colors duration-300">
                       {exp.logo}

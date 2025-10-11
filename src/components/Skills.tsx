@@ -1,8 +1,44 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Cloud, Server, Settings, Monitor, Shield, GitBranch } from 'lucide-react';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === sectionRef.current) {
+              setIsVisible(true);
+            }
+            const index = (entry.target as HTMLElement).dataset.index;
+            if (index) {
+              itemRefs.current[parseInt(index)]?.classList.remove('opacity-0', 'translate-y-10');
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    itemRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
 
   const skillCategories = [
     {
@@ -51,7 +87,7 @@ const Skills = () => {
 
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300">
+    <section id="skills" ref={sectionRef} className="py-20 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white relative overflow-hidden transition-colors duration-300">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
@@ -61,7 +97,7 @@ const Skills = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
             Technical Expertise
           </h2>
@@ -73,7 +109,10 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg dark:shadow-gray-900/50 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-300 p-6 relative overflow-hidden hover:border-blue-500/50 dark:hover:border-blue-400/50 hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 hover:scale-105 transform"
+              ref={el => itemRefs.current[index] = el}
+              data-index={index}
+              className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg dark:shadow-gray-900/50 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-500 p-6 relative overflow-hidden hover:border-blue-500/50 dark:hover:border-blue-400/50 hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 hover:scale-105 transform opacity-0 translate-y-10"
+              style={{ transitionDelay: `${index * 100}ms` }}
               onMouseEnter={() => setActiveCategory(index)}
             >
               {/* Glowing edge effect on hover */}
@@ -124,7 +163,12 @@ const Skills = () => {
         </div>
 
         {/* Additional Competencies */}
-        <div className="relative">
+        <div 
+          ref={el => itemRefs.current[skillCategories.length] = el}
+          data-index={skillCategories.length}
+          className="relative transition-all duration-500 opacity-0 translate-y-10"
+          style={{ transitionDelay: `${skillCategories.length * 100}ms` }}
+        >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-200/30 to-indigo-200/30 rounded-3xl blur-xl"></div>
           <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-3xl p-8 border border-purple-200/50 dark:border-purple-700/50 shadow-xl dark:shadow-gray-900/50">
             <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">

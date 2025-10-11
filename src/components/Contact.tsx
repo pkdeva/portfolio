@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import useWeb3forms from '@web3forms/react';
 import { Mail, MapPin, Github, Linkedin, Send, CheckCircle, Twitter } from 'lucide-react';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitResult, setSubmitResult] = useState<{ success?: boolean; message?: string }>({});
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const { submit } = useWeb3forms({
     access_key: "39716599-07e6-4701-a5f1-40c441460122",
@@ -12,11 +15,11 @@ const Contact = () => {
       from_name: "Portfolio Contact Form",
       subject: "New Contact Form Submission from Portfolio",
     },
-    onSuccess: (msg: string, data: any) => {
+    onSuccess: (msg: string) => {
       setSubmitResult({ success: true, message: msg });
       setIsSubmitting(false);
     },
-    onError: (msg: string, data: any) => {
+    onError: (msg: string) => {
       setSubmitResult({ success: false, message: msg });
       setIsSubmitting(false);
     }
@@ -32,10 +35,42 @@ const Contact = () => {
     await submit(data);
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target === sectionRef.current) {
+              setIsVisible(true);
+            }
+            const index = (entry.target as HTMLElement).dataset.index;
+            if (index) {
+              itemRefs.current[parseInt(index)]?.classList.remove('opacity-0', 'translate-y-10');
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    itemRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-      <section id="contact" className="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <section id="contact" ref={sectionRef} className="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <div className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl transition-colors duration-300">
               Let's Work Together
             </h2>
@@ -46,7 +81,12 @@ const Contact = () => {
 
           <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Contact Information */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 transition-colors duration-300">
+            <div 
+              ref={el => itemRefs.current[0] = el}
+              data-index="0"
+              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 transition-all duration-500 opacity-0 translate-y-10"
+              style={{ transitionDelay: '100ms' }}
+            >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">Get In Touch</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
                 I'm currently available for freelance DevOps and SRE projects. Whether you need 
@@ -113,7 +153,12 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 transition-colors duration-300">
+            <div 
+              ref={el => itemRefs.current[1] = el}
+              data-index="1"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 transition-all duration-500 opacity-0 translate-y-10"
+              style={{ transitionDelay: '200ms' }}
+            >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">Send a Message</h3>
               
               {submitResult.success ? (
@@ -194,7 +239,12 @@ const Contact = () => {
           </div>
 
           {/* Availability Notice */}
-          <div className="mt-16 bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 text-center transition-colors duration-300">
+          <div 
+            ref={el => itemRefs.current[2] = el}
+            data-index="2"
+            className="mt-16 bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 text-center transition-all duration-500 opacity-0 translate-y-10"
+            style={{ transitionDelay: '300ms' }}
+          >
             <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4 transition-colors duration-300">
               🚀 Available for New Projects
             </h3>
