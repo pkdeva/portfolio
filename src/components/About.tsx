@@ -71,7 +71,7 @@ const About = () => {
             About Me
           </h2>
           <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
-            Engineering resilient systems that scale beyond expectations while driving innovation at the intersection of technology and business impact
+            I architect, automate and accelerate cloud platforms that enable scale, resilience, and measurable business outcomes.
           </p>
         </div>
 
@@ -152,7 +152,7 @@ const About = () => {
               </div>
             </div>
 
-            {/* Scalable Solutions Section */}
+            {/* What I Build Section */}
             <div
               className={`transition-all duration-700 ease-out delay-500 ${
                 isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
@@ -160,7 +160,7 @@ const About = () => {
             >
               <div className="relative">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 relative group transition-colors duration-300">
-                  <span className="relative z-10">Scalable Solutions</span>
+                  <span className="relative z-10">What I Build</span>
                   <div className="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full group-hover:w-32 transition-all duration-500"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-100/20 to-blue-100/20 dark:from-purple-800/20 dark:to-blue-800/20 rounded-lg transform scale-0 group-hover:scale-110 transition-all duration-700 blur-xl opacity-0 group-hover:opacity-100"></div>
                 </h3>

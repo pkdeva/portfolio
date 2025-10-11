@@ -92,9 +92,9 @@ const Hero = () => {
                 </h1>
 
                 <p className="mt-6 text-xl text-gray-500 dark:text-gray-400 max-w-2xl transition-colors duration-300">
-                  Building resilient cloud infrastructure at Y-Combinator backed health-tech startup.
-                  Expertise in AWS, GCP, Kubernetes, and CI/CD automation. Passionate about reliability engineering
-                  and aligning technology with business impact.
+                  I build resilient cloud infrastructure that scales with purpose.
+                  Currently driving reliability at a Y-Combinator backed health-tech startup, aligning engineering
+                  excellence with real business outcomes.
                 </p>
 
                 <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
@@ -118,20 +118,18 @@ const Hero = () => {
                   </div>
                 </div>
 
-                <div className={`mt-8 flex space-x-6 transition-all duration-700 ease-out transform ${iconsLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-                  <a href="https://github.com/pkdeva" target="_blank" rel="noopener noreferrer" className={`group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gray-900 dark:hover:bg-gray-600 transition-all duration-500 transform ${iconsLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-90'}`} style={{ transitionDelay: iconsLoaded ? '150ms' : '0ms' }}>
+                <div className="mt-8 flex space-x-6">
+                  <a href="https://github.com/pkdeva" target="_blank" rel="noopener noreferrer" className="group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-gray-900 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
                     <span className="sr-only">GitHub</span>
                     <Github className="h-6 w-6 transform group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 rounded-full bg-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                   </a>
-
-                  <a href="https://linkedin.com/in/pkdeva" target="_blank" rel="noopener noreferrer" className={`group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 dark:hover:bg-blue-500 transition-all duration-500 transform ${iconsLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-90'}`} style={{ transitionDelay: iconsLoaded ? '300ms' : '0ms' }}>
+                  <a href="https://linkedin.com/in/pkdeva" target="_blank" rel="noopener noreferrer" className="group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 dark:hover:bg-blue-500 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
                     <span className="sr-only">LinkedIn</span>
                     <Linkedin className="h-6 w-6 transform group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 rounded-full bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                   </a>
-
-                  <a href="#contact" className={`group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-green-600 dark:hover:bg-green-500 transition-all duration-500 transform ${iconsLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-90'}`} style={{ transitionDelay: iconsLoaded ? '450ms' : '0ms' }}>
+                  <a href="#contact" className="group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-white hover:bg-green-600 dark:hover:bg-green-500 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
                     <span className="sr-only">Contact</span>
                     <Mail className="h-6 w-6 transform group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 rounded-full bg-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>

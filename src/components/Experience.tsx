@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Building, Calendar, ExternalLink, Award } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Calendar, Award } from 'lucide-react';
 
 const Experience = () => {
   const [visibleCards, setVisibleCards] = useState(new Set());
@@ -9,7 +9,7 @@ const Experience = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const index = parseInt(entry.target.dataset.index);
+          const index = parseInt((entry.target as HTMLElement).dataset.index as string);
           if (entry.isIntersecting) {
             setVisibleCards(prev => new Set([...prev, index]));
           }
@@ -127,7 +127,12 @@ const Experience = () => {
                       {exp.highlights.map((highlight, hIndex) => (
                         <li key={hIndex} className="flex items-start">
                           <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed transition-colors duration-300">{highlight}</span>
+                          <span
+                            className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed transition-colors duration-300"
+                            dangerouslySetInnerHTML={{
+                              __html: highlight.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-gray-900 dark:text-white">$1</strong>'),
+                            }}
+                          ></span>
                         </li>
                       ))}
                     </ul>
