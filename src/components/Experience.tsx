@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Calendar, Award } from 'lucide-react';
+import { Calendar, Award, Cloud } from 'lucide-react';
 
 const Experience = () => {
   const [visibleCards, setVisibleCards] = useState(new Set());
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const timelineRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -11,7 +13,7 @@ const Experience = () => {
         entries.forEach((entry) => {
           const index = parseInt((entry.target as HTMLElement).dataset.index as string);
           if (entry.isIntersecting) {
-            setVisibleCards(prev => new Set([...prev, index]));
+            setVisibleCards(prev => new Set(Array.from(prev).concat(index)));
           }
         });
       },
@@ -23,6 +25,32 @@ const Experience = () => {
     });
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current || !containerRef.current) return;
+
+      const container = containerRef.current;
+      const timeline = timelineRef.current;
+      const { top, height } = container.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      const scrollableHeight = height - viewportHeight;
+      if (scrollableHeight <= 0) {
+        timeline.style.transform = 'scaleY(1)';
+        return;
+      }
+
+      const progress = Math.max(0, Math.min(1, (-top + viewportHeight / 2) / scrollableHeight));
+      
+      timeline.style.transform = `scaleY(${progress})`;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const experiences = [
@@ -54,7 +82,7 @@ const Experience = () => {
         "Integrated **observability tools** (Prometheus/Grafana, NewRelic, SumoLogic)",
         "Developed **SRE practices** with SLIs, SLOs, and error budgets"
       ],
-      logo: "☁️"
+      logo: Cloud
     }
   ];
 
@@ -70,37 +98,40 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="mt-12 relative">
+        <div ref={containerRef} className="mt-16 relative">
           {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-blue-200 dark:bg-blue-700"></div>
+          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-blue-200 dark:bg-blue-700">
+            <div ref={timelineRef} className="h-full w-full bg-blue-600 dark:bg-blue-400 origin-top" style={{ transform: 'scaleY(0)' }}></div>
+          </div>
 
-          <div className="space-y-16">
+          <div>
             {experiences.map((exp, index) => (
               <div
                 key={index}
                 ref={(el) => (cardRefs.current[index] = el)}
                 data-index={index}
-                className={`relative flex items-start transition-all duration-700 ease-out ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'
+                className={`relative flex items-center mb-16 sticky transition-all duration-700 ease-out ${
+                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 } ${
                   visibleCards.has(index)
-                    ? 'translate-y-0 opacity-100'
-                    : 'translate-y-10 opacity-0'
+                    ? 'translate-y-0 opacity-100 scale-100'
+                    : 'translate-y-20 opacity-0 scale-95'
                 }`}
                 style={{
-                  transitionDelay: `${index * 150}ms`
+                  top: `${6 + index * 2}rem`,
+                  transitionDelay: `${index * 100}ms`
                 }}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 mt-1 w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center transition-colors duration-300 z-10">
+                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center transition-colors duration-300 z-10">
                   <div className="w-3 h-3 bg-white rounded-full"></div>
                 </div>
 
                 {/* Content */}
-                <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 p-8 ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'} md:w-5/12 hover:shadow-2xl dark:hover:shadow-gray-900/70 transition-all duration-300`}>
+                <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 p-8 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8 md:ml-0' : 'md:ml-8'} md:w-5/12 hover:shadow-2xl dark:hover:shadow-gray-900/70 transition-all duration-300`}>
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center text-xl mr-4 transition-colors duration-300">
-                      {exp.logo}
+                      {typeof exp.logo === 'string' ? exp.logo : <exp.logo className="h-6 w-6 text-blue-600 dark:text-blue-400" />}
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{exp.role}</h3>

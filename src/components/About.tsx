@@ -183,7 +183,7 @@ const About = () => {
                 >
                   <p className="text-lg italic relative z-10 text-center">
                     <span className="relative text-purple-700 dark:text-purple-300">
-                      "Effortless scaling with cloud automation."
+                      "Effortless scaling"
                     </span>
                   </p>
                 </div>
