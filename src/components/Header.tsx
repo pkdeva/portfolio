@@ -21,39 +21,39 @@ const Header = () => {
     <>
       {/* Sticky Right Navigation - Only show when scrolled */}
       {isScrolled && (
-        <div className="fixed top-6 right-6 z-40 transition-all duration-500 ease-out transform">
-          <div className="bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-gray-700/50 shadow-2xl p-3 animate-slideInRight">
+        <div className="fixed top-1/2 -translate-y-1/2 right-4 z-40 transition-all duration-500 ease-out transform">
+          <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl p-2 animate-slideInRight">
             {/* Vertical Navigation Icons */}
-            <div className="flex flex-col space-y-3">
-              <a href="#home" className="w-12 h-12 text-green-500 hover:text-green-400 hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Home">
-                <Home className="w-5 h-5" />
+            <div className="flex flex-col space-y-2">
+              <a href="#home" className="w-10 h-10 text-green-500 hover:text-green-400 bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-700/50 rounded-lg transition-all duration-300 flex items-center justify-center group" title="Home">
+                <Home className="w-4 h-4" />
               </a>
-              <a href="#about" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="About">
-                <User className="w-5 h-5" />
+              <a href="#about" className="w-10 h-10 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700/50 rounded-lg transition-all duration-300 flex items-center justify-center group" title="About">
+                <User className="w-4 h-4" />
               </a>
-              <a href="#experience" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Experience">
-                <Briefcase className="w-5 h-5" />
+              <a href="#experience" className="w-10 h-10 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700/50 rounded-lg transition-all duration-300 flex items-center justify-center group" title="Experience">
+                <Briefcase className="w-4 h-4" />
               </a>
-              <a href="#skills" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Skills">
-                <Code className="w-5 h-5" />
+              <a href="#skills" className="w-10 h-10 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700/50 rounded-lg transition-all duration-300 flex items-center justify-center group" title="Skills">
+                <Code className="w-4 h-4" />
               </a>
-              <a href="#projects" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Projects">
-                <FolderOpen className="w-5 h-5" />
+              <a href="#projects" className="w-10 h-10 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700/50 rounded-lg transition-all duration-300 flex items-center justify-center group" title="Projects">
+                <FolderOpen className="w-4 h-4" />
               </a>
-              <a href="#contact" className="w-12 h-12 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-300 flex items-center justify-center group" title="Contact">
-                <MessageCircle className="w-5 h-5" />
+              <a href="#contact" className="w-10 h-10 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white bg-gray-100 dark:bg-gray-700/50 rounded-lg transition-all duration-300 flex items-center justify-center group" title="Contact">
+                <MessageCircle className="w-4 h-4" />
               </a>
 
               {/* Dark Mode Toggle */}
-              <div className="border-t border-gray-700/50 pt-3 mt-3">
+              <div className="border-t border-gray-200/50 dark:border-gray-700/50 pt-2 mt-2">
                 <button
                   onClick={toggleDarkMode}
-                  className="w-12 h-12 rounded-xl bg-gray-800/50 hover:bg-gray-700 transition-all duration-300 flex items-center justify-center border border-gray-600"
+                  className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center border border-gray-300/50 dark:border-gray-600/50"
                   aria-label="Toggle dark mode"
                 >
-                  <div className="relative w-5 h-5">
-                    <Sun className={`absolute inset-0 h-5 w-5 text-yellow-500 transition-all duration-300 ${isDarkMode ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'}`} />
-                    <Moon className={`absolute inset-0 h-5 w-5 text-blue-400 transition-all duration-300 ${isDarkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'}`} />
+                  <div className="relative w-4 h-4">
+                    <Sun className={`absolute inset-0 h-4 w-4 text-yellow-500 transition-all duration-300 ${isDarkMode ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'}`} />
+                    <Moon className={`absolute inset-0 h-4 w-4 text-blue-400 transition-all duration-300 ${isDarkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'}`} />
                   </div>
                 </button>
               </div>

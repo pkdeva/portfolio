@@ -39,8 +39,8 @@ const Hero = () => {
     <>
       {/* Sticky Profile Card - Only show when scrolled */}
       {isScrolled && (
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 sm:left-6 sm:-translate-x-0 z-40 w-[90vw] max-w-xs sm:w-90 transition-all duration-500 ease-out transform">
-          <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl p-6 sm:p-8 transform animate-slideInLeft transition-colors duration-300">
+        <div className="fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 sm:left-6 sm:-translate-x-0 z-40 w-[90vw] max-w-xs sm:w-auto transition-all duration-500 ease-out transform">
+          <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-3xl border border-gray-200/50 dark:border-gray-700/50 shadow-2xl p-6 sm:p-8 transform animate-slideInLeft transition-colors duration-300 w-full sm:w-80">
             {/* Brand Header - AT THE TOP like Drake */}
             <div className="flex justify-center items-start mb-4 sm:mb-6">
               <div>
