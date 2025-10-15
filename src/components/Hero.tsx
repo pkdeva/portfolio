@@ -10,19 +10,20 @@ const Hero = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 100); // Keep original logic for sticky card
+      setIsScrolled(scrollPosition > 100);
 
       const heroHeight = window.innerHeight;
       if (scrollPosition < heroHeight) {
         const progress = scrollPosition / heroHeight;
-        const opacity = 1 - progress * 1.5;
-        const translateY = -scrollPosition / 3;
+        const opacity = 1 - progress * 2; // Faster fade
+        const translateY = -scrollPosition / 2; // Faster parallax
+        const scale = 1 - progress * 0.3; // Shrink effect
         setHeroStyle({
           opacity: Math.max(0, opacity),
-          transform: `translateY(${translateY}px)`,
+          transform: `translateY(${translateY}px) scale(${scale})`,
         });
       } else {
-        setHeroStyle({ opacity: 0, transform: 'translateY(-333px)' });
+        setHeroStyle({ opacity: 0, transform: `translateY(-${heroHeight / 2}px) scale(0.7)` });
       }
     };
 
@@ -87,7 +88,7 @@ const Hero = () => {
       )}
 
       {/* Original Hero Section */}
-      <section id="home" className="relative bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center transition-colors duration-300 overflow-hidden">
+      <section id="home" className="relative bg-transparent min-h-screen flex items-center justify-center transition-colors duration-300 overflow-hidden sticky top-0">
         <div 
           ref={heroContentRef}
           style={heroStyle}
