@@ -1,102 +1,62 @@
-import { useEffect, useRef, useState } from 'react';
-import { Cloud, Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
+
+// Custom X (Twitter) Icon Component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    className={className}
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const Footer = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer ref={sectionRef} className="bg-gray-900 dark:bg-gray-950 text-white transition-colors duration-300">
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-blue-600 dark:bg-blue-500 p-2 rounded-lg transition-colors duration-300">
-                <Cloud className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-xl font-bold">Priyanshu Kumar</span>
-            </div>
-            <p className="text-gray-300 dark:text-gray-400 mb-4 max-w-md transition-colors duration-300">
-              DevOps Engineer & SRE specialist building scalable cloud infrastructure.
-              Currently at Y-Combinator backed health-tech startup, available for freelance projects.
-            </p>
-            <div className="flex space-x-4">
-              <a href="https://github.com/pkdeva" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition-colors">
-                <Github className="h-5 w-5" />
-              </a>
-              <a href="https://linkedin.com/in/pkdeva" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="mailto:priyanshu.txt@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-gray-200 transition-colors">
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
+    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col items-center space-y-4">
+          {/* Social Links */}
+          <div className="flex items-center space-x-6">
+            <a
+              href="https://github.com/pkdeva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:text-white hover:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+              aria-label="GitHub"
+            >
+              <Github className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" />
+            </a>
+            <a
+              href="https://linkedin.com/in/pkdeva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative p-3 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:text-white hover:bg-blue-600 dark:hover:bg-blue-500 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" />
+            </a>
+            <a
+              href="https://x.com/pkdevaa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative p-3 rounded-full bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:text-white hover:bg-black dark:hover:bg-gray-700 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+              aria-label="X (formerly Twitter)"
+            >
+              <XIcon className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" />
+            </a>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="#home" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Home</a></li>
-              <li><a href="#about" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">About</a></li>
-              <li><a href="#experience" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Experience</a></li>
-              <li><a href="#skills" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Skills</a></li>
-              <li><a href="#projects" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Projects</a></li>
-              <li><a href="#contact" className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-gray-300 dark:text-gray-400 transition-colors duration-300">
-              <li>Cloud Migration</li>
-              <li>Infrastructure Automation</li>
-              <li>CI/CD Implementation</li>
-              <li>Kubernetes Consulting</li>
-              <li>Performance Optimization</li>
-              <li>SRE Consulting</li>
-            </ul>
+          {/* Copyright */}
+          <div className="flex flex-col items-center space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <span>© {currentYear} Priyanshu K.</span>
+            <span className="text-center">Stability is a myth. I simply forced this to behave.</span>
           </div>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center transition-colors duration-300">
-          <div className="text-gray-400 dark:text-gray-500 text-sm transition-colors duration-300">
-            © {new Date().getFullYear()} Priyanshu Kumar. All rights reserved.
-          </div>
-          <div className="flex items-center text-gray-400 dark:text-gray-500 text-sm mt-4 md:mt-0 transition-colors duration-300">
-            <span>Built with</span>
-            <Heart className="h-4 w-4 mx-1 text-red-500" />
-            <span>and React</span>
-          </div>
-        </div>
-      </div>
+      </div>  
     </footer>
   );
 };
