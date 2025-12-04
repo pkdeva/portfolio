@@ -27,8 +27,8 @@ export const DarkModeProvider = ({ children }: DarkModeProviderProps) => {
         return JSON.parse(saved);
       }
     }
-    // Default to light mode
-    return false;
+    // Default to dark mode
+    return true;
   });
 
   useEffect(() => {

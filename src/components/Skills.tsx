@@ -73,7 +73,7 @@ const Skills = () => {
       title: "Logging, Monitoring & Observability",
       icon: Monitor,
       gradient: "from-red-600 to-orange-500",
-      skills: ["Prometheus", "Grafana Stack", "OpenTelemetry", "NewRelic", "ELK Stack", "SumoLogic"],
+      skills: ["Prometheus", "Grafana Stack", "OpenTelemetry", "NewRelic", "ELK Stack", "Datadog", "SumoLogic"],
       level: 85
     },
     {

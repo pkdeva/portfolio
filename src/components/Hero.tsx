@@ -117,13 +117,27 @@ const Hero = () => {
 
                 <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-4 sm:space-y-0 justify-center lg:justify-start">
                   <div className="flex space-x-6">
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors"
+                    <button
+                      onClick={() => {
+                        const contactForm = document.getElementById('contact-form');
+                        if (contactForm) {
+                          const yOffset = -80; // Adjust this value to scroll lower (-80px offset)
+                          const y = contactForm.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                          window.scrollTo({ top: y, behavior: 'smooth' });
+                        } else {
+                          // Fallback to contact section
+                          const contactSection = document.getElementById('contact');
+                          contactSection?.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                          });
+                        }
+                      }}
+                      className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors cursor-pointer"
                     >
                       Hit Me Up
                       <Mail className="ml-3 h-6 w-6" />
-                    </a>
+                    </button>
                     <a
                       href="/PK DevOps CV.pdf"
                       target="_blank"

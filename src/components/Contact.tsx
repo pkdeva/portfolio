@@ -68,13 +68,13 @@ const Contact = () => {
   }, []);
 
   return (
-      <section id="contact" ref={sectionRef} className="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <section id="contact" ref={sectionRef} className="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 select-text">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl transition-colors duration-300">
+          <div className={`text-center transition-all duration-700 select-text ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-0'}`}>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl transition-colors duration-300 select-text">
               Let's Work Together
             </h2>
-            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
+            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300 select-text">
               Ready to optimize your infrastructure? Let's discuss your project requirements.
             </p>
           </div>
@@ -84,11 +84,11 @@ const Contact = () => {
             <div 
               ref={el => itemRefs.current[0] = el}
               data-index="0"
-              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 transition-all duration-500 opacity-0 translate-y-10"
+              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 transition-all duration-500 opacity-100 translate-y-0 select-text"
               style={{ transitionDelay: '100ms' }}
             >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">Get In Touch</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300 select-text">Get In Touch</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300 select-text">
                 I'm currently available for freelance DevOps and SRE projects. Whether you need 
                 cloud migration, infrastructure optimization, or CI/CD implementation, I'd love to help.
               </p>
@@ -101,7 +101,7 @@ const Contact = () => {
                   <div className="ml-4">
                     <p className="text-lg font-medium text-gray-900 dark:text-white transition-colors duration-300">Email</p>
                     <a href="mailto:priyanshu.txt@gmail.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
-                      priyanshu.txt@gmail.com
+                      priyanshu.txt[at]gmail.com
                     </a>
                   </div>
                 </div>
@@ -154,9 +154,10 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div 
+              id="contact-form"
               ref={el => itemRefs.current[1] = el}
               data-index="1"
-              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 transition-all duration-500 opacity-0 translate-y-10"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 transition-all duration-500 opacity-100 translate-y-0 select-text"
               style={{ transitionDelay: '200ms' }}
             >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">Send a Message</h3>

@@ -108,7 +108,6 @@ textarea:focus {
   font-family: 'Caveat', cursive;
   font-weight: 700;
   font-size: 1.05em;
-  color: #1a1a1a;
   display: inline-block;
   letter-spacing: 1px;
   transform: rotate(-1deg);
@@ -147,7 +146,6 @@ textarea:focus {
 }
 
 .dark .sketch-text {
-  color: #f0f0f0;
   filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
 }
 
@@ -171,55 +169,14 @@ textarea:focus {
 .sketch-content {
   position: relative;
   padding: 1.5rem;
-  background: linear-gradient(135deg,
-    rgba(59, 130, 246, 0.02) 0%,
-    rgba(147, 197, 253, 0.03) 50%,
-    rgba(59, 130, 246, 0.02) 100%);
-  border-left: 3px solid rgba(59, 130, 246, 0.3);
-  border-radius: 0.75rem;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.05),
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);
-}
-
-.sketch-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 0.75rem;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 2px,
-    rgba(59, 130, 246, 0.01) 2px,
-    rgba(59, 130, 246, 0.01) 4px
-  );
-  pointer-events: none;
-  opacity: 0.5;
+  background: transparent;
+  border-left: 3px solid rgba(59, 130, 246, 0.25);
+  border-radius: 0;
 }
 
 .dark .sketch-content {
-  background: linear-gradient(135deg,
-    rgba(96, 165, 250, 0.04) 0%,
-    rgba(147, 197, 253, 0.05) 50%,
-    rgba(96, 165, 250, 0.04) 100%);
+  background: transparent;
   border-left: 3px solid rgba(96, 165, 250, 0.4);
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.05);
-}
-
-.dark .sketch-content::before {
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 2px,
-    rgba(96, 165, 250, 0.02) 2px,
-    rgba(96, 165, 250, 0.02) 4px
-  );
 }
 
 /* Gradient backgrounds */
