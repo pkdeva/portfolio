@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DarkModeProvider } from './contexts/DarkModeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -24,9 +24,10 @@ function App() {
 
   return (
     <DarkModeProvider>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
         <Header />
-        <main className={`transition-all duration-500 ${isScrolled ? 'sm:ml-96 sm:mr-16 px-4 sm:px-6' : 'px-4 sm:px-6 lg:px-8'}`}>
+        {/* Add top padding on mobile for fixed header */}
+        <main className={`pt-14 lg:pt-0 transition-all duration-500 ${isScrolled ? 'lg:ml-96 lg:mr-16' : ''}`}>
           <Hero />
           <About />
           <Experience />
@@ -34,7 +35,7 @@ function App() {
           <Projects />
           <Contact />
         </main>
-        <div className={`transition-all duration-500 ${isScrolled ? 'sm:ml-96 sm:mr-16 px-4 sm:px-6' : 'px-4 sm:px-6 lg:px-8'}`}>
+        <div className={`transition-all duration-500 ${isScrolled ? 'lg:ml-96 lg:mr-16' : ''}`}>
           <Footer />
         </div>
       </div>

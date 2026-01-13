@@ -39,6 +39,18 @@ const Projects = () => {
     };
   }, []);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProject]);
+
   const projects = [
     {
       title: "Multi-Cloud Infrastructure Migration",
@@ -74,9 +86,9 @@ const Projects = () => {
       icon: Zap
     },
     {
-      title: "Event-Driven Microservices Architecture",
+      title: "Event-Driven Microservices",
       description: "Architected scalable event-driven system using AWS services, improving system throughput and reliability for real-time processing.",
-      technologies: ["AWS Lambda", "SQS", "SNS", "API Gateway", "GCloud Pub/Sub", "DynamoDB", "Redis"],
+      technologies: ["AWS Lambda", "SQS", "SNS", "API Gateway", "Redis"],
       achievements: [
         "Improved system scalability",
         "Real-time event processing",
@@ -87,87 +99,94 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" ref={sectionRef} className="py-16 transition-colors duration-300">
+    <section id="projects" ref={sectionRef} className="py-12 sm:py-16 md:py-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Compact Header */}
-        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl transition-colors duration-300">
+        {/* Header */}
+        <div className={`text-center mb-8 sm:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
             Project Breakthroughs
           </h2>
-          <p className="mt-3 text-lg text-gray-600 dark:text-gray-300 transition-colors duration-300">
+          <p className="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-300 transition-colors duration-300">
             Impactful DevOps and infrastructure implementations
           </p>
         </div>
 
-        {/* Compact Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 relative">
           {projects.map((project, index) => (
             <div
               key={index}
               ref={el => itemRefs.current[index] = el}
               data-index={index}
-              className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-lg dark:shadow-gray-900/50 hover:shadow-xl dark:hover:shadow-gray-900/70 transition-all duration-500 p-6 cursor-pointer relative overflow-hidden hover:border-blue-500/50 dark:hover:border-blue-400/50 hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 hover:scale-105 transform opacity-0 translate-y-10"
+              className="group bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-md dark:shadow-gray-900/50 hover:shadow-lg dark:hover:shadow-gray-900/70 transition-all duration-300 p-4 sm:p-5 cursor-pointer relative overflow-hidden hover:border-blue-500/50 dark:hover:border-blue-400/50 transform opacity-0 translate-y-10"
               style={{ transitionDelay: `${index * 100}ms` }}
               onClick={() => setSelectedProject(index)}
             >
-              {/* Glowing edge effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 blur-sm transition-all duration-300 -z-20"></div>
               {/* Header */}
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center mr-3 transition-colors duration-300">
-                  <project.icon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+              <div className="flex items-center mb-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-2 sm:mr-3 transition-colors duration-300">
+                  <project.icon className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 dark:text-blue-400" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300">{project.title}</h3>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white transition-colors duration-300 line-clamp-2">{project.title}</h3>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 transition-colors duration-300">
+              <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-3 transition-colors duration-300 line-clamp-2">
                 {project.description}
               </p>
 
               {/* Technologies */}
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, techIndex) => (
+              <div className="mb-3">
+                <div className="flex flex-wrap gap-1.5">
+                  {project.technologies.slice(0, 4).map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium rounded-full transition-colors duration-300"
+                      className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-[10px] sm:text-xs font-medium rounded-full transition-colors duration-300"
                     >
                       {tech}
                     </span>
                   ))}
+                  {project.technologies.length > 4 && (
+                    <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-[10px] sm:text-xs font-medium rounded-full">
+                      +{project.technologies.length - 4}
+                    </span>
+                  )}
                 </div>
               </div>
 
               {/* Key Achievements */}
               <div>
-                <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-300">Key Achievements:</h4>
+                <h4 className="text-xs font-semibold text-gray-900 dark:text-white mb-1.5 transition-colors duration-300">Key Achievements:</h4>
                 <ul className="space-y-1">
-                  {project.achievements.map((achievement, achievementIndex) => (
-                    <li key={achievementIndex} className="flex items-start text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
-                      <div className="w-1.5 h-1.5 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 mr-2 flex-shrink-0"></div>
-                      {achievement}
+                  {project.achievements.slice(0, 2).map((achievement, achievementIndex) => (
+                    <li key={achievementIndex} className="flex items-start text-xs text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                      <div className="w-1 h-1 bg-blue-600 dark:bg-blue-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></div>
+                      <span className="line-clamp-1">{achievement}</span>
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              {/* Tap to view more indicator */}
+              <div className="mt-3 text-xs text-blue-600 dark:text-blue-400 font-medium text-center">
+                Tap to view details →
               </div>
             </div>
           ))}
         </div>
 
-        {/* Compact Call to Action */}
+        {/* CTA */}
         <div 
           ref={el => itemRefs.current[projects.length] = el}
           data-index={projects.length}
-          className="mt-12 text-center transition-all duration-500 opacity-0 translate-y-10"
+          className="mt-8 sm:mt-10 text-center transition-all duration-500 opacity-0 translate-y-10"
           style={{ transitionDelay: `${projects.length * 100}ms` }}
         >
           <a
             href="#contact"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 dark:hover:from-blue-600 dark:hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer"
+            className="inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 dark:hover:from-blue-600 dark:hover:to-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer text-sm sm:text-base"
           >
             <Award className="h-4 w-4 mr-2" />
             Start a Project
@@ -175,83 +194,74 @@ const Projects = () => {
           </a>
         </div>
 
-        {/* Liquid Glass Popup Overlay */}
+        {/* Modal Popup */}
         {selectedProject !== null && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Backdrop with liquid glass effect */}
+            {/* Backdrop */}
             <div
-              className="absolute inset-0 backdrop-blur-xl bg-white/20 dark:bg-black/30 transition-all duration-500 ease-out"
+              className="absolute inset-0 backdrop-blur-md bg-black/50 transition-all duration-300"
               onClick={() => setSelectedProject(null)}
-            >
-              {/* Animated background particles */}
-              <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
-            </div>
+            />
 
-            {/* Popup Card */}
-            <div className="relative max-w-2xl w-full max-h-[90vh] overflow-auto">
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-2xl rounded-3xl border border-white/30 dark:border-gray-700/30 shadow-2xl dark:shadow-gray-900/50 p-8 transform transition-all duration-500 ease-out scale-100 animate-pulse">
-                {/* Close Button */}
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-gray-100/80 dark:bg-gray-700/80 hover:bg-gray-200/80 dark:hover:bg-gray-600/80 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
-                >
-                  <X className="h-5 w-5 text-gray-600 dark:text-gray-300" />
-                </button>
+            {/* Modal Card */}
+            <div className="relative bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-2xl dark:shadow-gray-900/50 w-full max-w-lg max-h-[85vh] overflow-auto mx-4 transform transition-all duration-300 scale-100">
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-3 right-3 w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full flex items-center justify-center transition-all duration-300 z-10"
+              >
+                <X className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 dark:text-gray-300" />
+              </button>
 
-                {/* Enhanced Project Content */}
-                <div className="space-y-6">
-                  {/* Header with Enhanced Icon */}
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-                      {React.createElement(projects[selectedProject].icon, {
-                        className: "h-8 w-8 text-white"
-                      })}
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                        {projects[selectedProject].title}
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {projects[selectedProject].technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="px-3 py-1 bg-blue-100/80 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-sm font-medium rounded-full backdrop-blur-sm"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+              <div className="p-4 sm:p-6 space-y-4 sm:space-y-5">
+                {/* Header */}
+                <div className="flex items-start space-x-3 pr-8">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+                    {React.createElement(projects[selectedProject].icon, {
+                      className: "h-6 w-6 sm:h-7 sm:w-7 text-white"
+                    })}
                   </div>
-
-                  {/* Enhanced Description */}
-                  <div className="bg-gray-50/50 dark:bg-gray-700/30 rounded-2xl p-6 backdrop-blur-sm">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Project Overview</h4>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                      {projects[selectedProject].description}
-                    </p>
-                  </div>
-
-                  {/* Enhanced Achievements */}
-                  <div className="bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-6 backdrop-blur-sm">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-                      <Award className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400" />
-                      Key Achievements
-                    </h4>
-                    <div className="space-y-3">
-                      {projects[selectedProject].achievements.map((achievement, achievementIndex) => (
-                        <div key={achievementIndex} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-3 flex-shrink-0"></div>
-                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            {achievement}
-                          </p>
-                        </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {projects[selectedProject].title}
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5">
+                      {projects[selectedProject].technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium rounded-full"
+                        >
+                          {tech}
+                        </span>
                       ))}
                     </div>
                   </div>
+                </div>
 
+                {/* Description */}
+                <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4">
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">Project Overview</h4>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                    {projects[selectedProject].description}
+                  </p>
+                </div>
+
+                {/* Achievements */}
+                <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl p-4">
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                    <Award className="h-4 w-4 mr-2 text-blue-600 dark:text-blue-400" />
+                    Key Achievements
+                  </h4>
+                  <div className="space-y-2">
+                    {projects[selectedProject].achievements.map((achievement, achievementIndex) => (
+                      <div key={achievementIndex} className="flex items-start space-x-2">
+                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          {achievement}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
