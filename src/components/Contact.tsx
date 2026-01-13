@@ -79,12 +79,12 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Contact Information */}
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+            {/* Contact Information - 40% */}
             <div 
               ref={el => itemRefs.current[0] = el}
               data-index="0"
-              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 transition-all duration-500 opacity-100 translate-y-0 select-text"
+              className="lg:col-span-2 bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 transition-all duration-500 opacity-100 translate-y-0 select-text"
               style={{ transitionDelay: '100ms' }}
             >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300 select-text">Get In Touch</h3>
@@ -152,12 +152,12 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Contact Form - 60% */}
             <div 
               id="contact-form"
               ref={el => itemRefs.current[1] = el}
               data-index="1"
-              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 transition-all duration-500 opacity-100 translate-y-0 select-text"
+              className="lg:col-span-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-lg dark:shadow-gray-900/50 transition-all duration-500 opacity-100 translate-y-0 select-text"
               style={{ transitionDelay: '200ms' }}
             >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">Send a Message</h3>
