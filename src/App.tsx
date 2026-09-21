@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DarkModeProvider } from './contexts/DarkModeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -11,35 +11,19 @@ import Footer from './components/Footer';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   return (
     <DarkModeProvider>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div className={`site-shell ${isScrolled ? 'is-scrolled' : ''}`}>
         <Header />
-        <main className={`transition-all duration-500 ${isScrolled ? 'sm:ml-96 sm:mr-16 px-4 sm:px-6' : 'px-4 sm:px-6 lg:px-8'}`}>
-          <Hero />
-          <About />
-          <Experience />
-          <Skills />
-          <Projects />
-          <Contact />
-        </main>
-        <div className={`transition-all duration-500 ${isScrolled ? 'sm:ml-96 sm:mr-16 px-4 sm:px-6' : 'px-4 sm:px-6 lg:px-8'}`}>
-          <Footer />
-        </div>
+        <main><Hero /><About /><Experience /><Skills /><Projects /><Contact /></main>
+        <Footer />
       </div>
     </DarkModeProvider>
   );
 }
-
 export default App;
