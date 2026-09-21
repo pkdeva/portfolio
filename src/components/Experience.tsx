@@ -7,7 +7,7 @@ const Experience = () => (
   <section id="experience" className="section section-inner">
     <div>
       <div className="section-heading"><div className="section-kicker">03 / Along the way</div><div><h2>Good teams. Real work.</h2><p>Building dependable foundations, one team at a time.</p></div></div>
-      <div>{experiences.map((experience) => <article className="experience-item" key={experience.company}><div className="experience-date">{experience.date}<br /><br />{experience.location}</div><div><h3>{experience.role}</h3><div className="experience-company">{experience.company}</div><p>{experience.description}</p><ul className="plain-list">{experience.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul></div></article>)}</div>
+      <div>{experiences.map((experience) => <article className="experience-item" key={experience.company}><div className="experience-date"><span>{experience.date}</span><span>{experience.location}</span></div><div><h3>{experience.role}</h3><div className="experience-company">{experience.company}</div><p>{experience.description}</p><ul className="plain-list">{experience.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul></div></article>)}</div>
     </div>
   </section>
 );
