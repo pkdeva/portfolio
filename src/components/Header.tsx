@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a href="#home" className="brand" onClick={() => setIsOpen(false)}><span className="brand-mark">PK</span><span>Priyanshu Kumar</span></a>
+        <a href="#home" className="brand" onClick={() => setIsOpen(false)}><span className="brand-mark">PK</span><span>pk@infra:~$</span></a>
         <nav className={`header-nav ${isOpen ? 'is-open' : ''}`}>
           {links.map(([id, label]) => <a key={id} href={`#${id}`} onClick={() => setIsOpen(false)}>{label}</a>)}
           <button className="theme-toggle" onClick={toggleDarkMode} aria-label="Toggle color theme">{isDarkMode ? <Sun size={15} /> : <Moon size={15} />}</button>

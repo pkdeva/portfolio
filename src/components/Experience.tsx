@@ -6,7 +6,7 @@ const experiences = [
 const Experience = () => (
   <section id="experience" className="section">
     <div className="section-inner">
-      <div className="section-heading"><div className="section-kicker">02 / Experience</div><div><h2>Where the work gets real.</h2><p>A record of building dependable foundations for ambitious teams.</p></div></div>
+      <div className="section-heading"><div className="section-kicker">02 / git log --work</div><div><h2>Where the work gets real.</h2><p>A record of building dependable foundations for ambitious teams.</p></div></div>
       <div>{experiences.map((experience) => <article className="experience-item" key={experience.company}><div className="experience-date">{experience.date}<br /><br />{experience.location}</div><div><h3>{experience.role}</h3><div className="experience-company">{experience.company}</div><p>{experience.description}</p><ul className="plain-list">{experience.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul></div></article>)}</div>
     </div>
   </section>

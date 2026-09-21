@@ -9,7 +9,7 @@ const About = () => (
   <section id="about" className="section">
     <div className="section-inner">
       <div className="section-heading">
-        <div className="section-kicker">01 / About</div>
+        <div className="section-kicker">01 / cat about.txt</div>
         <div><h2>Good infrastructure is felt, not noticed.</h2><p>Quiet systems. Clear decisions. A bias toward automation.</p></div>
       </div>
       <div className="split">
