@@ -8,9 +8,9 @@ const skillCategories: [string, string[]][] = [
 ];
 
 const Skills = () => (
-  <section id="skills" className="section">
-    <div className="section-inner">
-      <div className="section-heading"><div className="section-kicker">03 / ls ./toolkit</div><div><h2>The toolkit behind the calm.</h2><p>Tools are useful. Knowing when to use less of them is better.</p></div></div>
+  <section id="skills" className="section section-inner">
+    <div>
+      <div className="section-heading"><div className="section-kicker">04 / The toolkit</div><div><h2>A considered set of tools.</h2><p>Tools are useful. Knowing when to use less of them is better.</p></div></div>
       <div className="skill-columns">{skillCategories.map(([title, skills]) => <div className="skill-group" key={title}><h3>{title}</h3><div className="skill-tags">{skills.map((skill) => <span className="skill-tag" key={skill}>{skill}</span>)}</div></div>)}</div>
     </div>
   </section>

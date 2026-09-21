@@ -1,25 +1,17 @@
-import { ArrowUpRight, Download } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
 const Hero = () => (
-  <section id="home" className="hero">
-    <div className="section-inner">
-      <div className="hero-grid">
-        <div>
-          <div className="eyebrow">whoami // DevOps engineer + SRE catalyst</div>
-          <h1>Systems that <em>stay</em> <span>steady.</span></h1>
-          <p className="hero-copy">I build resilient cloud infrastructure for teams moving quickly and thoughtfully. Currently shaping reliability at Clinikally, a Y-Combinator backed health-tech company.</p>
-          <div className="hero-actions">
-            <a className="button-primary" href="#contact">Start a conversation <ArrowUpRight size={16} /></a>
-            <a className="text-link" href="/PK DevOps CV.pdf" target="_blank" rel="noopener noreferrer">View CV <Download size={15} /></a>
-          </div>
-          <div className="scroll-cue">scroll --follow-output</div>
-        </div>
-        <div className="hero-visual">
-          <img className="hero-image" src="/profile.png" alt="Priyanshu Kumar" />
-          <div className="hero-note"><strong>02+</strong>years of making complex systems feel simple.</div>
-        </div>
-      </div>
+  <section id="home" className="hero section-inner">
+    <div className="hero-intro">
+      <div className="identity"><img src="/profile.png" alt="Priyanshu Kumar" width="48" height="48" /><div>Priyanshu Kumar<span>DevOps Engineer & SRE</span></div></div>
+      <span className="availability"><span /> Open to collaborations</span>
     </div>
+    <h1>Less friction.<br />More <em>possibility.</em></h1>
+    <div className="hero-bottom">
+      <p className="hero-copy">I build the infrastructure behind good experiences.<br className="desktop-break" /> Reliable systems. Thoughtful automation. Room to grow.</p>
+      <a className="round-link" href="#projects" aria-label="Explore selected work"><ArrowDown size={23} /></a>
+    </div>
+    <div className="hero-footnote"><span>Currently building at <a href="#experience">Clinikally <ArrowUpRight size={12} /></a></span><span>Based in India · Working everywhere</span></div>
   </section>
 );
 export default Hero;

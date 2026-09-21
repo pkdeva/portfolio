@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { ArrowUpRight, X } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 const projects = [
   { title: 'Multi-cloud infrastructure migration', description: 'Led a comprehensive AWS to GCP migration for a health-tech platform, with zero-downtime deployment strategies and cost optimization.', technologies: ['AWS', 'GCP', 'Kubernetes', 'Terraform'], achievements: ['Zero critical downtime', '40% reduction in infrastructure costs', '60% performance improvement'] },
@@ -8,8 +7,16 @@ const projects = [
   { title: 'Event-driven microservices', description: 'Architected a scalable event-driven system for real-time processing with improved throughput, reliability, and service autonomy.', technologies: ['AWS Lambda', 'SQS', 'SNS', 'Redis'], achievements: ['Real-time event processing', 'Reduced service coupling', 'Improved scalability'] },
 ];
 
-const Projects = () => {
-  const [selected, setSelected] = useState<number | null>(null);
-  return <section id="projects" className="section"><div className="section-inner"><div className="section-heading"><div className="section-kicker">04 / less projects</div><div><h2>Proof, in production.</h2><p>A few systems, migrations, and patterns I have helped bring to life.</p></div></div><div className="project-grid">{projects.map((project, index) => <article className="project" key={project.title} onClick={() => setSelected(index)}><div className="project-top"><h3>{project.title}</h3><span className="project-index">0{index + 1} <ArrowUpRight className="project-arrow" size={18} /></span></div><p>{project.description}</p><div className="skill-tags">{project.technologies.map((technology) => <span className="skill-tag" key={technology}>{technology}</span>)}</div></article>)}</div>{selected !== null && <div className="project-modal-backdrop" onClick={() => setSelected(null)}><div className="project-modal" onClick={(event) => event.stopPropagation()}><button className="modal-close" onClick={() => setSelected(null)} aria-label="Close project"><X size={20} /></button><span className="section-kicker">project 0{selected + 1} --inspect</span><h3>{projects[selected].title}</h3><p>{projects[selected].description}</p><ul className="plain-list">{projects[selected].achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}</ul></div></div>}</div></section>;
-};
+const Projects = () => (
+  <section id="projects" className="section section-inner">
+    <div className="section-heading"><span className="section-kicker">01 / Selected work</span><div><h2>Built to <em>hold up.</em></h2><p>A few things I've helped make work better.</p></div></div>
+    <div className="project-list">{projects.map((project, index) => (
+      <details className="project" key={project.title}>
+        <summary><span className="project-index">0{index + 1}</span><div><h3>{project.title}</h3><p className="project-tech">{project.technologies.join(' / ')}</p></div><Plus className="project-arrow" size={22} /></summary>
+        <div className="project-content"><p>{project.description}</p><ul className="project-results">{project.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}</ul></div>
+      </details>
+    ))}</div>
+    <p className="work-note">Infrastructure is mostly invisible. The impact isn't.</p>
+  </section>
+);
 export default Projects;
