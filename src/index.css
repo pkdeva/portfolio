@@ -4,8 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light; --paper: #f8f7f3; --ink: #292923; --muted: #706f66; --line: #deddd5; --accent: #ac4b2d; --wash: #efeee8; }
-:root.dark { color-scheme: dark; --paper: #1d1e1b; --ink: #eeede5; --muted: #aaa99e; --line: #3b3c35; --accent: #ed9978; --wash: #272822; }
+:root { color-scheme: light; --paper: #f7f9fc; --ink: #202938; --muted: #647084; --line: #dce2eb; --accent: #315fce; --wash: #edf1f7; }
+:root.dark { color-scheme: dark; --paper: #151a23; --ink: #e8edf5; --muted: #a0adc0; --line: #303a49; --accent: #8eafff; --wash: #1e2734; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: 16px; }
