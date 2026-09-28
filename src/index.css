@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Lexend:wght@400;450;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,13 +9,15 @@
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: 16px; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Lexend', system-ui, sans-serif; font-size: 15px; line-height: 1.7; text-transform: lowercase; -webkit-font-smoothing: antialiased; }
+input, textarea, .identity, .hero-footnote a, .hero-footnote span:last-child, .body-copy strong, .project-tech, .project:nth-child(3) h3, .experience-company, .experience-date span:last-child, .plain-list, .skill-group:nth-child(4) h3, .skill-tag, .contact-email, .contact-meta a, .location, .site-footer span:first-child { text-transform: none; }
 ::selection { background: var(--accent); color: var(--paper); }
 a { color: inherit; text-decoration: none; }
 button, input, textarea { font: inherit; }
 button, summary { -webkit-tap-highlight-color: transparent; }
 a, button { touch-action: manipulation; }
 button { cursor: pointer; }
+button { text-transform: lowercase; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 p, h1, h2, h3 { margin: 0; }
 .section-inner, .header-inner { width: min(1280px, calc(100% - 96px)); margin-inline: auto; }
@@ -25,7 +27,7 @@ p, h1, h2, h3 { margin: 0; }
 .site-header { flex-shrink: 0; background: var(--paper); }
 .header-inner { height: 76px; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(40px, 6vw, 90px); align-items: center; border-bottom: 1px solid var(--line); }
 .header-controls { display: flex; align-items: center; gap: 24px; min-width: 0; }
-.brand { font-size: 32px; font-weight: 600; letter-spacing: -3px; line-height: 1; padding-block: 10px; justify-self: start; }
+.brand { font-family: 'EB Garamond', Georgia, serif; font-size: 32px; font-weight: 600; letter-spacing: -3px; line-height: 1; padding-block: 10px; justify-self: start; }
 .brand span { color: var(--accent); }
 .contact-meta a { transition: color .2s; }
 .contact-meta a:hover { color: var(--accent); }
@@ -39,9 +41,9 @@ p, h1, h2, h3 { margin: 0; }
 .identity span { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
 .availability { display: flex; align-items: center; gap: 9px; font-size: 11px; color: var(--muted); }
 .availability > span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-h1, h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
-h1 { font-size: clamp(66px, 6.5vw, 96px); line-height: .99; letter-spacing: -.04em; margin: 30px 0 24px; }
-h1 em, h2 em { font-weight: 400; color: var(--accent); }
+h1, h2 { font-family: 'EB Garamond', Georgia, serif; font-weight: 400; text-wrap: balance; }
+h1 { font-size: clamp(54px, 5.3vw, 76px); line-height: 1.1; letter-spacing: -.025em; margin: 30px 0 24px; }
+h1 em, h2 em { font-style: normal; font-weight: inherit; color: var(--accent); }
 .hero-copy { color: var(--muted); font-size: 14px; line-height: 1.8; max-width: 340px; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-block: 28px; }
 .hero-footnote { display: flex; flex-direction: column; gap: 3px; margin-top: auto; padding-top: 14px; color: var(--muted); font-size: 11px; }
@@ -55,7 +57,7 @@ h1 em, h2 em { font-weight: 400; color: var(--accent); }
 .portfolio-panel > .section { width: 100%; margin: 0; }
 .section-heading { display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
 .section-kicker { color: var(--muted); font-size: 10px; letter-spacing: .05em; }
-h2 { font-size: clamp(38px, 3.8vw, 52px); line-height: 1.08; letter-spacing: -.025em; }
+h2 { font-size: clamp(30px, 2.8vw, 40px); line-height: 1.2; letter-spacing: -.02em; }
 .section-heading p { color: var(--muted); margin-top: 12px; font-size: 13px; }
 .project { border-top: 1px solid var(--line); }
 .project:last-child { border-bottom: 1px solid var(--line); }
@@ -67,10 +69,9 @@ h2 { font-size: clamp(38px, 3.8vw, 52px); line-height: 1.08; letter-spacing: -.0
 .project-arrow { color: var(--muted); transition: transform .2s; }
 .project summary:hover h3 { color: var(--accent); }
 .project[open] .project-arrow { transform: rotate(45deg); color: var(--accent); }
-.project-content { padding: 0 20px 24px 38px; color: var(--muted); font-size: 13px; }
+.project-content { padding: 0 20px 24px 38px; color: var(--muted); font-size: 13px; text-transform: none; }
 .project-results { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; margin: 16px 0 0; list-style: none; color: var(--accent); font-size: 11px; }
 .project-results li::before { content: '↗'; margin-right: 7px; }
-.work-note { font-size: 11px; color: var(--muted); margin-top: 18px; }
 .about-body { display: grid; gap: 22px; }
 .body-copy { font-size: 18px; line-height: 1.8; letter-spacing: -.015em; }
 .secondary-copy { font-size: 14px; color: var(--muted); letter-spacing: 0; }
@@ -105,6 +106,7 @@ h2 { font-size: clamp(38px, 3.8vw, 52px); line-height: 1.08; letter-spacing: -.0
 .form-field label { font-size: 11px; }
 .form-field input, .form-field textarea { width: 100%; min-width: 0; min-height: 44px; border: 0; border-bottom: 1px solid var(--line); background: transparent; border-radius: 0; padding: 5px 0 10px; color: var(--ink); font-size: 14px; resize: vertical; }
 .form-field input::placeholder, .form-field textarea::placeholder { color: var(--muted); opacity: .85; }
+.form-field input::placeholder, .form-field textarea::placeholder { text-transform: lowercase; }
 .button-primary { display: inline-flex; align-items: center; justify-content: center; gap: 28px; min-height: 44px; padding: 11px 18px; border: 1px solid var(--ink); border-radius: 3px; background: var(--ink); color: var(--paper); font-size: 12px; transition: background .2s; }
 .button-primary:hover { background: var(--accent); border-color: var(--accent); }
 .button-primary:disabled { opacity: .6; cursor: wait; }
@@ -121,7 +123,7 @@ h2 { font-size: clamp(38px, 3.8vw, 52px); line-height: 1.08; letter-spacing: -.0
 }
 @media (min-width: 1001px) and (max-height: 850px) {
   .portfolio-layout { padding-block: 28px; }
-  h1 { font-size: clamp(60px, 9vh, 76px); margin: 22px 0 18px; }
+  h1 { font-size: clamp(52px, 7.5vh, 64px); margin: 22px 0 18px; }
   .hero-intro { gap: 14px; }
   .hero-actions { margin-block: 20px; }
 }
@@ -133,8 +135,7 @@ h2 { font-size: clamp(38px, 3.8vw, 52px); line-height: 1.08; letter-spacing: -.0
   .header-inner .theme-toggle { grid-column: 2; grid-row: 1; }
   .portfolio-layout { display: flex; flex-direction: column; gap: 38px; padding-block: 32px; }
   .hero-intro { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; }
-  h1 { font-size: clamp(58px, 9.5vw, 88px); margin: 28px 0 18px; }
-  .hero-line-break { display: none; }
+  h1 { font-size: clamp(44px, 7.5vw, 68px); margin: 28px 0 18px; }
   .hero-copy { max-width: 440px; }
   .hero-actions { margin-block: 20px; }
   .hero-footnote { flex-direction: row; flex-wrap: wrap; gap: 4px 20px; padding-top: 0; }
@@ -142,7 +143,7 @@ h2 { font-size: clamp(38px, 3.8vw, 52px); line-height: 1.08; letter-spacing: -.0
   .section-tabs { grid-column: 1 / -1; grid-row: 2; gap: 4px; }
   .section-tabs button { font-size: 12px; }
   .portfolio-panel { padding-top: 6px; padding-right: 0; min-height: 430px; }
-  h2 { font-size: 44px; }
+  h2 { font-size: 36px; }
   .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; }
   .form-field input, .form-field textarea { font-size: 16px; }
   .portfolio-panel :focus-visible { outline-offset: 2px; }
@@ -155,10 +156,10 @@ h2 { font-size: clamp(38px, 3.8vw, 52px); line-height: 1.08; letter-spacing: -.0
   .identity span { font-size: 10px; }
   .availability { max-width: 100px; font-size: 10px; line-height: 1.6; }
   .availability > span { flex-shrink: 0; }
-  h1 { font-size: clamp(49px, 12vw, 72px); }
+  h1 { font-size: clamp(36px, 9vw, 52px); }
   .hero-copy { font-size: 13px; }
   .section-tabs button { padding-inline: 4px; font-size: 11px; }
-  h2 { font-size: 39px; }
+  h2 { font-size: 30px; }
   .project h3 { font-size: 17px; }
   .project summary { gap: 10px; }
   .project-tech { word-spacing: 0; }
