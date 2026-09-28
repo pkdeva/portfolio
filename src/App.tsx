@@ -14,7 +14,7 @@ const sections = [
   { id: 'about', label: 'About', Component: About },
   { id: 'experience', label: 'Experience', Component: Experience },
   { id: 'skills', label: 'Toolkit', Component: Skills },
-  { id: 'contact', label: 'Contact', Component: Contact },
+  { id: 'contact', label: 'Reach out', Component: Contact },
 ];
 const sectionFromHash = () => sections.find(section => `#${section.id}` === window.location.hash)?.id ?? 'projects';
 

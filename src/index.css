@@ -59,6 +59,7 @@ h1 em, h2 em { font-style: normal; font-weight: inherit; color: var(--accent); }
 .section-kicker { color: var(--muted); font-size: 10px; letter-spacing: .05em; }
 h2 { font-size: clamp(30px, 2.8vw, 40px); line-height: 1.2; letter-spacing: -.02em; }
 .section-heading p { color: var(--muted); margin-top: 12px; font-size: 13px; }
+#projects .section-heading p { text-transform: none; }
 .project { border-top: 1px solid var(--line); }
 .project:last-child { border-bottom: 1px solid var(--line); }
 .project summary { display: grid; grid-template-columns: 24px 1fr 20px; gap: 14px; align-items: center; list-style: none; cursor: pointer; padding: 22px 0; }
@@ -79,9 +80,9 @@ h2 { font-size: clamp(30px, 2.8vw, 40px); line-height: 1.2; letter-spacing: -.02
 .text-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; border-bottom: 1px solid var(--line); font-size: 12px; }
 .about-body .text-link { margin-top: 18px; }
 .text-link:hover { color: var(--accent); border-color: var(--accent); }
-.experience-item { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 22px; border-top: 1px solid var(--line); padding: 24px 0; }
+.experience-item { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 22px; border-top: 1px solid var(--line); padding: 24px 0; }
 .experience-item:last-child { padding-bottom: 0; }
-.experience-date { display: flex; flex-direction: column; gap: 8px; color: var(--muted); font-size: 10px; }
+.experience-date { display: flex; flex-direction: column; gap: 8px; color: var(--muted); font-size: 10px; text-transform: none; }
 .experience-item h3 { font-size: 19px; font-weight: 450; letter-spacing: -.03em; }
 .experience-company { font-size: 12px; color: var(--accent); margin-top: 3px; }
 .experience-item p { color: var(--muted); font-size: 13px; margin-top: 14px; }
