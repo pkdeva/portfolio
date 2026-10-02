@@ -10,12 +10,13 @@ export const useDarkMode = () => {
 
 export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    try { return localStorage.getItem('darkMode') === 'true'; }
-    catch { return false; }
+    try { return localStorage.getItem('darkMode') !== 'false'; }
+    catch { return true; }
   });
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDarkMode);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDarkMode ? '#151a23' : '#f7f9fc');
     try { localStorage.setItem('darkMode', String(isDarkMode)); }
     catch { /* The theme still works when browser storage is unavailable. */ }
   }, [isDarkMode]);

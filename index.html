@@ -1,9 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#f7f9fc" />
+    <meta name="theme-color" content="#151a23" />
+    <script>
+      try {
+        if (localStorage.getItem('darkMode') === 'false') {
+          document.documentElement.classList.remove('dark');
+          document.querySelector('meta[name="theme-color"]').content = '#f7f9fc';
+        }
+      } catch { /* Dark remains the default when storage is unavailable. */ }
+    </script>
     <meta name="description" content="Priyanshu Kumar — DevOps Engineer & SRE. Reliable cloud infrastructure, thoughtful automation, and systems built to grow." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Priyanshu Kumar — DevOps & SRE</title>
