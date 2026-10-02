@@ -47,9 +47,16 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('header [role=tablist]').length"), 1);
   assert.equal(await evaluate("document.querySelectorAll('[role=tablist]').length"), 1);
   assert.equal(await evaluate("document.querySelector('[role=tab][aria-selected=true]').id"), 'tab-experience');
-  assert.equal(await evaluate("document.querySelectorAll('.project').length"), 4);
+  assert.equal(await evaluate("document.querySelectorAll('.project').length"), 6);
+  assert.deepEqual(await evaluate("[...document.querySelectorAll('.project-content a')].map(a => a.getAttribute('href'))"), [
+    'https://github.com/pkdeva/portfolio/blob/main/docs/engineering/cloud-migration.md',
+    'https://github.com/pkdeva/portfolio/blob/main/docs/engineering/kubernetes-reliability.md',
+    'https://github.com/pkdeva/portfolio/blob/main/docs/engineering/cloud-cost-optimization.md',
+  ]);
+  assert.ok(await evaluate("[...document.querySelectorAll('.project-content a')].every(a => a.textContent.includes('illustrative') && a.getAttribute('aria-label').includes('scenario'))"));
+  assert.ok(await evaluate("document.querySelector('.project:last-child .project-tech').textContent.startsWith('Illustrative scenario')"));
   assert.equal(await evaluate("document.querySelectorAll('.experience-item').length"), 2);
-  assert.equal(await evaluate("document.querySelectorAll('.skill-group').length"), 6);
+  assert.equal(await evaluate("document.querySelectorAll('.skill-group').length"), 7);
   for (const [width, height] of [[1440, 900], [1024, 740], [1280, 600], [768, 1024], [390, 844], [320, 640]]) {
     await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
     for (const id of ['projects', 'about', 'experience', 'skills', 'contact']) {
@@ -88,6 +95,7 @@ try {
   await select('projects');
   await evaluate("document.querySelector('summary').click()");
   assert.ok(await evaluate("document.querySelector('details').open"));
+  assert.ok(await evaluate("(() => { const a = document.querySelector('details a'); const r = a.getBoundingClientRect(); return r.width > 0 && r.left >= 0 && r.right <= innerWidth; })()"), 'Scenario link is not visible inside the expanded card');
   await select('about');
   await select('projects');
   assert.ok(await evaluate("document.querySelector('details').open"));
