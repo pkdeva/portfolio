@@ -53,8 +53,8 @@ try {
     'https://github.com/pkdeva/portfolio/blob/main/docs/engineering/kubernetes-reliability.md',
     'https://github.com/pkdeva/portfolio/blob/main/docs/engineering/cloud-cost-optimization.md',
   ]);
-  assert.ok(await evaluate("[...document.querySelectorAll('.project-content a')].every((a, i) => a.textContent.includes(i === 2 ? 'anonymized case study' : 'illustrative engineering scenario') && a.getAttribute('aria-label').includes(i === 2 ? 'anonymized case study' : 'illustrative engineering scenario'))"));
-  assert.ok(await evaluate("document.querySelector('.project:last-child .project-tech').textContent.startsWith('Anonymized case study')"));
+  assert.ok(await evaluate("[...document.querySelectorAll('.project-content a')].every((a, i) => a.textContent.includes(i === 1 ? 'illustrative engineering scenario' : 'anonymized case study') && a.getAttribute('aria-label').includes(i === 1 ? 'illustrative engineering scenario' : 'anonymized case study'))"));
+  assert.ok(await evaluate("document.querySelector('.project:last-child .project-tech').textContent.startsWith('Cloud Finops Case Study')"));
   assert.equal(await evaluate("document.querySelectorAll('.experience-item').length"), 2);
   assert.equal(await evaluate("document.querySelectorAll('.skill-group').length"), 7);
   for (const [width, height] of [[1440, 900], [1024, 740], [1280, 600], [768, 1024], [390, 844], [320, 640]]) {

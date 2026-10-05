@@ -8,9 +8,9 @@ Currently working at **Clinikally (YC S22)**; previously **va2pt.com**.
 
 ## Engineering decisions, in public
 
-Most of my professional infrastructure work lives in private systems. I publish an anonymized cost-optimization case study and illustrative migration and Kubernetes scenarios to explain my decisions without exposing employer code or private systems.
+Most of my professional infrastructure work lives in private systems. I publish anonymized migration and cost-optimization case studies and an illustrative Kubernetes scenario to explain my decisions without exposing employer code or private systems.
 
-- [Cloud migration: cutover, data consistency, and a way back](https://github.com/pkdeva/portfolio/blob/main/docs/engineering/cloud-migration.md)
+- [Moving off Shopify: infrastructure, delivery, security, and observability — anonymized case study](https://github.com/pkdeva/portfolio/blob/main/docs/engineering/cloud-migration.md)
 - [Kubernetes: deployment health, scaling, permissions, and recovery](https://github.com/pkdeva/portfolio/blob/main/docs/engineering/kubernetes-reliability.md)
 - [How I cut AWS spend by about 35% — anonymized case study](https://github.com/pkdeva/portfolio/blob/main/docs/engineering/cloud-cost-optimization.md)
 

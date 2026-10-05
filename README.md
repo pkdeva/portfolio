@@ -11,15 +11,15 @@ This repository contains my portfolio website and original engineering writeups.
 - **Clinikally (YC S22), June 2025–present:** DevOps work spanning EKS, RBAC, HPA/KEDA, Jenkins/Helm delivery, mobile OTA publishing, and analytics/data pipelines.
 - **va2pt.com, February 2024–June 2025:** DevOps/SRE work spanning AWS/GCP infrastructure, migrations, event-driven services, observability, and cloud cost optimization.
 
-These are summaries of the experience described in my CV. The cost-optimization article covers an anonymized client engagement at va2pt.com; the migration and Kubernetes articles are illustrative scenarios.
+These are summaries of the experience described in my CV. The migration and cost-optimization articles are anonymized accounts of work I led. The Kubernetes article is an illustrative scenario.
 
 ## Engineering writeups
 
-The cost case study describes work I owned across roughly 100 AWS accounts: about 35% lower spend, equivalent to approximately ₹30 lakh in annualized savings. The migration and Kubernetes scenarios explain decisions, tradeoffs, and proposed validation.
+The cost case study describes work I owned across roughly 100 AWS accounts: about 35% lower spend, equivalent to approximately ₹30 lakh in annualized savings. The migration case study covers infrastructure for an in-house commerce platform with over two dozen services. The Kubernetes scenario explains decisions, tradeoffs, and proposed validation.
 
 | Writeup | Decisions to inspect |
 |---|---|
-| [Planning a cloud migration with a way back](docs/engineering/cloud-migration.md) | Data ownership, staged cutover, payment retries, rollback boundaries, and reconciliation |
+| [Building the infrastructure for a move off Shopify](docs/engineering/cloud-migration.md) | Anonymized case study: Terraform, Kubernetes, environments, Jenkins/Helm rollback, workload security, and observability |
 | [Operating Kubernetes beyond successful deployments](docs/engineering/kubernetes-reliability.md) | Health probes, capacity, scaling, permissions, service signals, and incident recovery |
 | [How I cut AWS spend by about 35%](docs/engineering/cloud-cost-optimization.md) | Anonymized case study: redundant networking, shared ALBs, rightsizing, retention, and pipeline cleanup |
 
